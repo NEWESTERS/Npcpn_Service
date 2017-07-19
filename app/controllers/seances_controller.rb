@@ -3,7 +3,7 @@ class SeancesController < ApplicationController
   before_action :auth_filter, except: [:show]
 
   def auth_filter
-    if current_user.nil? || current_user.email != 'admin@admin.ru'
+    if current_user.nil? || current_user.email != 'admin'
       redirect_to root_path
     end
   end
@@ -12,7 +12,8 @@ class SeancesController < ApplicationController
   end
 
   def clear(doc, date)
-    @arr = Seance.where("strftime('%d-%m-%Y', date) = ? and doctor_id = ?", date, doc)
+    # @arr = Seance.where("strftime('%d-%m-%Y', date) = ? and doctor_id = ?", date, doc)
+    @arr = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and doctor_id = ?", date, doc)
     @arr.each { |e| e.destroy }
   end
 
@@ -65,7 +66,9 @@ class SeancesController < ApplicationController
   # GET /seances.json
   def index
     @date = params[:date].blank? ? Time.now.strftime("%d-%m-%Y") : params[:date]
-    @seances = Seance.where("strftime('%d-%m-%Y', date) = ?", @date)
+    # @seances = Seance.where("strftime('%d-%m-%Y', date) = ?", @date)
+    @seances = Seance.where("to_char(date, 'DD-MM-YYYY') = ?", @date)
+    # @seances = Seance.all
   end
 
   # GET /seances/1

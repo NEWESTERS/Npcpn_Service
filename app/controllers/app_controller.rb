@@ -11,7 +11,7 @@ class AppController < ApplicationController
   	case params[:to_find]
   	when "doctor"
   	  # находим все сеансы в выбранный день
-  	  @result = Seance.where("strftime('%d-%m-%Y', date) = ?", params[:date])
+  	  @result = Seance.where("to_char(date, 'DD-MM-YYYY') = ?", params[:date])
       # извлекаем только свободные сеансы
       @result = @result.select { |p| p.client.nil? }
   	  # извлекаем список врачей без повторов
@@ -20,12 +20,12 @@ class AppController < ApplicationController
   	  @result = @result.collect { |p| [p.last_name + ' ' + p.name + ' ' + p.patronymic, p.id] }
   	when "seance"
   	  # находим все сеансы выбранного врача в выбранный день
-  	  @result = Seance.where("strftime('%d-%m-%Y', date) = ? and doctor_id = ?", params[:date], params[:doctor_id])
+  	  @result = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and doctor_id = ?", params[:date], params[:doctor_id])
   	  # извлекаем время сеансов
   	  @result = @result.collect { |p| [p.date.strftime('%H:%M'), p.id] }
     when "is_schedule"
       # находим все сеансы выбранного врача в выбранный день
-      @query = Seance.where("strftime('%d-%m-%Y', date) = ? and doctor_id = ?", params[:date], params[:doctor_id])
+      @query = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and doctor_id = ?", params[:date], params[:doctor_id])
       # определяем наличие сеансов
       @result = @query.blank? ? [['-']] : [['+']]
   	end

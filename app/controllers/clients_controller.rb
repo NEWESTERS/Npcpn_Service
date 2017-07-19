@@ -1,5 +1,12 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :auth_filter
+
+  def auth_filter
+    if current_user.nil? || current_user.email != 'admin'
+      redirect_to root_path
+    end
+  end
 
   # GET /clients
   # GET /clients.json
