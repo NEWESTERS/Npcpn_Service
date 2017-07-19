@@ -1,0 +1,38 @@
+/*
+ *= require_self
+ *= require jquery-ui/datepicker
+ */
+ 
+@import "bootstrap";
+
+body {
+	background-color: #b2dfdb;
+}
+
+.container {
+	background-color: #e0f2f1;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, .25);
+}
+
+hr {
+	border-color: #aaaaaa;
+}
+
+.btn-primary {
+	background-color: #80cbc4;
+	border-color: #80cbc4;
+}
+
+.text-warning {
+	color: #e65100;
+}
+
+@media print {
+	p {
+		font-size: 40px;
+	}
+
+	.hide-print {
+		display: none;
+	}
+}

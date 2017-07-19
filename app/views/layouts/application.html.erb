@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cliniq</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if !current_user.nil? %>
+      <%= link_to 'Меню', '/menu/view', :class => "btn btn-primary btn-lg btn-block" %>
+    <% end %>
+    
+  	<div class="container box-shadow">
+  		<div class="row">
+  			<div class="col-md-2"></div>
+  			<div class="col-md-8">
+    			<%= yield %>
+    		</div>
+    	</div>
+    </div>
+  </body>
+</html>

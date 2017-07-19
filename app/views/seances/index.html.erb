@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Сеансы</h1>
+
+<%= form_tag('/seances', :method => 'get') do %>
+  <div class="row">
+    <div class="form-group col-md-4">
+      <label for="date">Дата</label>
+      <input type="text" class="form-control" id="date" name="date" placeholder="Выберите дату" required>
+    </div>
+    <div class="form-group col-md-4">
+      <br>
+      <button type="submit" class="btn btn-primary">Показать</button>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+    $(function(){
+      $("#date").datepicker({
+        dateFormat: "dd-mm-yy"
+      });
+    });
+</script>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Время</th>
+      <th>Врач</th>
+      <th>Пациент</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seances.each do |seance| %>
+      <tr>
+        <td><%= l seance.date, :format => :date %></td>
+        <td><%= l seance.date, :format => :time %></td>
+        <td><%= link_to ((doc = seance.doctor).last_name + ' ' + doc.name + ' ' + doc.patronymic), doctor_path(seance.doctor)%></td>
+        <% if seance.client.nil? %>
+          <td>—</td>
+        <% else %>
+          <td><%= link_to ((cli = seance.client).last_name + ' ' + cli.name + ' ' + cli.patronymic), client_path(seance.client)%></td>
+        <% end %>
+        <td><%= link_to 'Подробнее', seance %></td>
+        <td><%= link_to 'Изменить', edit_seance_path(seance) %></td>
+        <td><%= link_to 'Удалить', seance, method: :delete, data: { confirm: 'Подтвердите действие' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Новый сеанс', new_seance_path, :class => 'btn btn-primary btn-lg' %>
+
+<%= link_to 'Генератор расписания', '/seances/generator', :class => 'btn btn-primary btn-lg' %>
+
+<br><br>

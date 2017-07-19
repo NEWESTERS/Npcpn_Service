@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @doctor.last_name + ' ' + @doctor.name + ' ' + @doctor.patronymic %></h1>
+<table class="table table-hover">
+	<tr>
+		<td><b>Информация</b></td>
+		<td><%= 'Данные из БД' %></td>
+	</tr>
+</table>
+
+<%= link_to 'Изменить', edit_doctor_path(@doctor)%> | 
+<%= link_to 'Все врачи', doctors_path%>

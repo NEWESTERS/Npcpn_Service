@@ -1,0 +1,133 @@
+<div class="row">
+<div class="col-md-6">
+<h1>Запись на приём</h1>
+</div>
+
+<div class="col-md-3"></div>
+<div class="col-md-2">
+<br>
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Помощь</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Уважаемые посетители сайта ГБУЗ НПЦ им. Соловьева ДЗМ!</h4>
+      </div>
+      <div class="modal-body">
+        <p>У Вас есть возможность записаться на прием к врачу. Запись осуществляется предварительно, если на следующий день – не позже 14-00 текущего дня. Запись происходит автоматически. На прием следует прийти не позднее, чем за 15 минут до его начала для того, чтобы успеть оформить амбулаторную карту.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<%= form_tag('app/add', :method => 'get') do %>
+  <h3>Персональная информация</h3>
+  <div class="row">
+	  <div class="form-group col-md-4">
+	    <label for="input_last_name">Фамилия</label>
+	    <input type="text" class="form-control" id="input_last_name" name="last_name" placeholder="Иванов" required>
+	  </div>
+
+	  <div class="form-group col-md-4">
+	    <label for="input_name">Имя</label>
+	    <input type="text" class="form-control" id="input_name" name="name" placeholder="Иван" required>
+	  </div>
+
+	  <div class="form-group col-md-4">
+	    <label for="input_patronymic">Отчество</label>
+	    <input type="text" class="form-control" id="input_patronymic" name="patronymic" placeholder="Иванович" required>
+	  </div>
+  </div>
+
+  <div class="row">
+	  <div class="form-group col-md-4">
+	    <label for="birthdate">Дата рождения</label>
+	    <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Выберите дату" required>
+	  </div>
+	  <div class="form-group col-md-8">
+	  	<br />
+	  	<label><input type="checkbox" name="is_moscow"> Наличие Московской прописки*</label><br />
+	  	<label class="text-warning">*при отсутствии Московской прописки услуги предоставляются на платной основе</label>
+	  </div>
+  </div>
+
+  <hr>
+
+  <h3>Контактные данные</h3>
+  <div class="row">
+	  <div class="form-group col-md-6">
+	    <label for="input_email">E-mail</label>
+	    <input type="email" class="form-control" id="input_email" name="email" placeholder="example@gmail.com" required>
+	  </div>
+
+	  <div class="form-group col-md-6">
+	    <label for="input_phone">Номер телефона</label>
+	    <input type="text" class="form-control" id="input_phone" name="phone" placeholder="+7 (499) 237-41-53" required>
+	  </div>
+  </div>
+
+  <hr>
+
+  <h3>Выбор даты приёма</h3>
+  <div class="row">
+	  <div class="form-group col-md-4">
+	    <label for="datepicker">Дата</label>
+	    <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Выберите дату" required>
+	  </div>
+
+	  <div class="form-group col-md-6">
+	    <label for="doctor">Врач</label>
+	    <select class="form-control" id="doctor" name="doctor">
+	    	<option>Нет доступных вариантов</option>
+	    </select>
+	  </div>
+
+	  <div class="form-group col-md-2">
+	    <label for="seance">Время</label>
+	    <select class="form-control" id="seance" name="seance"></select>
+	  </div>
+  </div>
+
+  <div class="row">
+  	<div class="form-group col-md-4"></div>
+  	<div class="form-group col-md-4">
+  		<button type="submit" class="btn btn-primary btn-lg btn-block">Записаться</button>
+  	</div>
+  </div>
+  
+<% end %>
+
+<script type="text/javascript">
+	$('#doctor').trigger('change');
+	// инициализация календарей для выбора дат
+	$(function(){
+		var min = (new Date()).getHours() > 13 ? 2 : 1;
+    	$("#datepicker").datepicker({
+    		dateFormat: "dd-mm-yy",
+    		// этот аттрибут означает,что записаться на приём возможно только на 1 день вперёд
+    		minDate: min,
+    		altFormat: "dd.mm.yy"
+    	});
+    	$("#birthdate").datepicker({
+    		dateFormat: "dd-mm-yy",
+    		changeYear: true,
+    		yearRange: "c-100:c",
+    		changeMonth: true,
+    		altFormat: "dd.mm.yy"
+    	});
+  	});
+</script>

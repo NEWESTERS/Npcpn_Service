@@ -1,0 +1,17 @@
+ru:
+  time:
+    formats:
+      default: "%d %B %Y — %H:%M"
+      date: "%d %B %Y"
+      time: "%H:%M"
+  date:
+    formats:
+      default: "%d %B %Y — %H:%M"
+      date: "%d %B %Y"
+      time: "%H:%M"
+    order: 
+      - :day
+      - :month
+      - :year
+    month_names: [~, Января, Февряля, Марта, Апреля, Мая, Июня, Июля, Августа, Сентября, Октября, Ноября, Декабря]
+    abbr_month_names: [~, Янв, Фев, Mар, Aпр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек]

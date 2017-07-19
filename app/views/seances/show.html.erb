@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Время</th>
+      <th>Врач</th>
+      <th>Пациент</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= l @seance.date, :format => :date %></td>
+        <td><%= l @seance.date, :format => :time %></td>
+        <td><%= (doc = @seance.doctor).nil? ? 'Отсутствует' : doc.last_name + ' ' + doc.name + ' ' + doc.patronymic %></td>
+        <td><%= (cli = @seance.client).nil? ? '—' : cli.last_name + ' ' + cli.name + ' ' + cli.patronymic %></td>
+      </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Изменить', edit_seance_path(@seance), :class => 'btn btn-primary btn-lg'  %> 
+<%= link_to 'Назад', seances_path, :class => 'btn btn-primary btn-lg'  %>
+
+<br><br>

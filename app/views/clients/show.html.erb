@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @client.last_name + ' ' + @client.name + ' ' + @client.patronymic %></h1>
+<table class="table table-hover">
+	<tr>
+		<td><b>Дата рождения:</b></td>
+		<td><%= l @client.birthdate, :format => :date %></td>
+	</tr>
+	<tr>
+		<td><b>Московская прописка:</b></td>
+		<td><%= @client.is_moscow == 'on' ? 'Имеется' : 'Отсутствует'  %></td>
+	</tr>
+	<tr>
+		<td><b>Номер телефона</b></td>
+		<td><%= @client.phone %></td>
+	</tr>
+	<tr>
+		<td><b>Email</b></td>
+		<td><%= @client.email %></td>
+	</tr>
+</table>
+
+<%= link_to 'Изменить', edit_client_path(@client) %> |
+<%= link_to 'Все пациенты', clients_path %> | 
+<%= link_to 'Сеансы', clients_path %>

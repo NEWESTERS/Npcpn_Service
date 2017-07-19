@@ -1,0 +1,4 @@
+<h3 class="hide-print">Вы успешно записались на приём</h3>
+<p>Пациент: <b><%= @client.last_name + ' ' + @client.name + ' ' + @client.patronymic %></b></p>
+<p>Врач: <b><%= (@doc = @seance.doctor).last_name + ' ' + @doc.name + ' ' + @doc.patronymic %></b></p>
+<p>Дата: <b><%= l @seance.date, format: :default %></b></p>

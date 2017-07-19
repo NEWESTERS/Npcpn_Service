@@ -1,0 +1,162 @@
+<h1>Создание расписания сеансов</h1>
+
+<%= form_tag('/seances/generate', :method => 'get') do %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="form-group col-md-4">
+      <label for="date">Дата</label>
+      <input type="text" class="form-control" id="date" name="date" placeholder="Выберите дату" required>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="doctor">Врач</label>
+     	<%= select_tag 'doctor', options_for_select(Doctor.all
+     		.collect{ |u| [u.last_name + ' ' + u.name + ' ' + u.patronymic, u.id] }), :class => 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row" id="warning" style="display: none;">
+    <p class="bg-warning"> Расписание к этому врачу на этот день уже существует. Будет осуществлена перезапись!</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="form-group col-md-4">
+      <label for="start-time">Время начала работы</label>
+      <div id="start-time" class="row">
+      <div class="col-md-5">
+        <select id="start-hour" name="start_hour" class="form-control">
+          <% 24.times do |num| %>
+            <option value="<%= num %>"><%= num %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col-md-1">:</div>
+      <div class="col-md-5">
+        <select id="start-minute" name="start_minute" class="form-control">
+          <% 12.times do |num| %>
+            <option value="<%= num * 5 %>"><%= num * 5 %></option>
+          <% end %>
+        </select>
+      </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="end-time">Время окончания работы</label>
+      <div id="end-time" class="row">
+      <div class="col-md-5">
+        <select id="end-hour" name="end_hour" class="form-control">
+          <% 24.times do |num| %>
+            <option value="<%= num %>"><%= num %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col-md-1">:</div>
+      <div class="col-md-5">
+        <select id="end-minute" name="end_minute" class="form-control">
+          <% 12.times do |num| %>
+            <option value="<%= num * 5 %>"><%= num * 5 %></option>
+          <% end %>
+        </select>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2">
+      <label for="break">Перерыв</label>
+      <select name="break" id="break" class="form-control">
+        <option value="0">Нет</option>
+        <option value="1">Да</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="break-start-time">Время начала перерыва</label>
+      <div id="break-start-time" class="row">
+      <div class="col-md-5">
+        <select id="break-start-hour" name="break_start_hour" class="form-control">
+          <% 24.times do |num| %>
+            <option value="<%= num %>"><%= num %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col-md-1">:</div>
+      <div class="col-md-5">
+        <select id="break-start-minute" name="break_start_minute" class="form-control">
+          <% 60.times do |num| %>
+            <option value="<%= num %>"><%= num %></option>
+          <% end %>
+        </select>
+      </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="break-end-time">Время окончания перерыва</label>
+      <div id="break-end-time" class="row">
+      <div class="col-md-5">
+        <select id="break-end-hour" name="break_end_hour" class="form-control">
+          <% 24.times do |num| %>
+            <option value="<%= num %>"><%= num %></option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col-md-1">:</div>
+      <div class="col-md-5">
+        <select id="break-end-minute" name="break_end_minute" class="form-control">
+          <% 60.times do |num| %>
+            <option value="<%= num %>"><%= num %></option>
+          <% end %>
+        </select>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4"></div>
+    <div class="form-group col-md-4">
+      <label for="length">Длительность приёма (мин)</label>
+      <select id="length" name="length" class="form-control">
+        <% 8.times do |num| %>
+          <% if num == 3 %>
+            <option value="<%= (1 + num) * 5 %>" selected="selected"><%= (1 + num) * 5 %></option>
+          <% else %>
+            <option value="<%= (1 + num) * 5 %>"><%= (1 + num) * 5 %></option>
+          <% end %>
+        <% end %>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4"></div>
+    <div class="form-group col-md-4">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Создать расписание</button>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-md-5"></div>
+  <div class="col-md-2">
+    <%= link_to 'Назад', '/seances', :class => 'btn btn-default' %>  
+  </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function(){
+      $("#date").datepicker({
+        dateFormat: "dd-mm-yy",
+        minDate: 0
+      });
+    });
+    $('#break').trigger('change');
+</script>
+<br>
+
+
+
+

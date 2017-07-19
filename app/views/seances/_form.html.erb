@@ -1,0 +1,32 @@
+<%= form_for(seance) do |f| %>
+  <% if seance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(seance.errors.count, "error") %> prohibited this seance from being saved:</h2>
+
+      <ul>
+      <% seance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label 'Дата' %>
+    <%= f.datetime_select :date %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Врач' %>
+    <%= f.select :doctor_id, Doctor.all.collect { |p| [p.last_name + ' ' + p.name + ' ' + p.patronymic, p.id] }, {}, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Пациент' %>
+    <%= f.select :client_id, Client.all.collect { |p| [p.last_name + ' ' + p.name + ' ' + p.patronymic, p.id] }, {:include_blank => 'Empty'}, :class => 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => 'btn btn-primary btn-lg' %>
+  </div>
+<% end %>
