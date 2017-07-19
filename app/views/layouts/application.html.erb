@@ -15,7 +15,6 @@
     
   	<div class="container box-shadow">
       <% if current_user.nil? %>
-        <%= link_to 'Регистрация', '/sign_up' %>
         <%= link_to 'Вход для персонала', '/sign_in' %>
       <% end %>
   		<div class="row">
