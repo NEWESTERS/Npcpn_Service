@@ -6,16 +6,30 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+  <% if browser.ie?("<9") %>
+    <h3 style="color: red">Вы используете старую версию браузера, содержимое может функционировать некорректно</h3>
+  <% end %>
     <% if !current_user.nil? %>
-      <%= link_to 'Меню', '/menu/view', :class => "btn btn-primary btn-lg btn-block" %>
+      <div class="row hide-print">
+        <div class="col-md-3"><%= link_to 'Запись', root_path, :class => "btn btn-primary btn-lg btn-block" %></div>
+
+        <div class="col-md-3"><%= link_to 'Расписание', '/seances', :class => "btn btn-primary btn-lg btn-block" %></div>
+
+        <div class="col-md-2"><%= link_to 'Пациенты', '/clients', :class => "btn btn-primary btn-lg btn-block" %></div>
+
+        <div class="col-md-2"><%= link_to 'Врачи', '/doctors', :class => "btn btn-primary btn-lg btn-block" %></div>
+
+        <div class="col-md-2"><%= link_to 'Выход', destroy_user_session_path, :method => :delete, :class => "btn btn-danger btn-lg btn-block" %></div>
+      </div>
     <% end %>
     
   	<div class="container box-shadow">
       <% if current_user.nil? %>
-        <%= link_to 'Вход для персонала', '/sign_in' %>
+        <%= link_to 'Вход для персонала', '/sign_in', :class => "hide-print" %>
       <% end %>
   		<div class="row">
   			<div class="col-md-2"></div>

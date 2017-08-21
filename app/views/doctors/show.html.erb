@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
-<h1><%= @doctor.last_name + ' ' + @doctor.name + ' ' + @doctor.patronymic %></h1>
+<h1><%= @doctor.full_name %></h1>
 <table class="table table-hover">
 	<tr>
-		<td><b>Информация</b></td>
-		<td><%= 'Данные из БД' %></td>
+		<td><b>Степень</b></td>
+		<td><%= (rank = @doctor.rank).nil? ? '—' : rank %></td>
 	</tr>
 </table>
 

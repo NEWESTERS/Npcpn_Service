@@ -17,9 +17,9 @@
     <% @clients.each do |client| %>
       <tr>
         <td><%= client.id %></td>
-        <td><%= client.last_name + ' ' + client.name + ' ' + client.patronymic %></td>
+        <td><%= client.full_name %></td>
         <td><%= (date = client.birthdate).nil? ? '—' : l(date, :format => :date) %></td>
-        <td><%= client.is_moscow == 'on' ? 'Имеется' : 'Отсутствеет'  %></td>
+        <td><%= client.is_moscow == 'on' ? 'Имеется' : 'Отсутствует'  %></td>
         <td><%= link_to 'Подробнее', client_path(client) %></td>
         <td><%= link_to 'Изменить', edit_client_path(client) %></td>
         <td><%= link_to 'Удалить', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>

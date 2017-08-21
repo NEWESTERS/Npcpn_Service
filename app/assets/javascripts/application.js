@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require bootstrap
+//= require jquery.inputmask
+//= require jquery.inputmask.extensions
+//= require jquery.inputmask.numeric.extensions
+//= require jquery.inputmask.date.extensions
 //= require jquery-ui/widgets/datepicker
 //= require jquery_ujs
 //= require turbolinks

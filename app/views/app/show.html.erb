@@ -2,3 +2,5 @@
 <p>Пациент: <b><%= @client.last_name + ' ' + @client.name + ' ' + @client.patronymic %></b></p>
 <p>Врач: <b><%= (@doc = @seance.doctor).last_name + ' ' + @doc.name + ' ' + @doc.patronymic %></b></p>
 <p>Дата: <b><%= l @seance.date, format: :default %></b></p>
+<p class="bg-warning">На прием следует прийти не позднее, чем за 15 минут до его начала для того, чтобы успеть оформить амбулаторную карту.</p>
+<button class="btn btn-default hide-print" onclick="window.print();">Напечатать</button><br><br>

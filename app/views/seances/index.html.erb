@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Сеансы</h1>
+<h4><%= @date %></h2>
 
 <%= form_tag('/seances', :method => 'get') do %>
   <div class="row">
@@ -20,6 +21,7 @@
       $("#date").datepicker({
         dateFormat: "dd-mm-yy"
       });
+      $("#date").inputmask("99-99-9999");
     });
 </script>
 
@@ -58,5 +60,7 @@
 <%= link_to 'Новый сеанс', new_seance_path, :class => 'btn btn-primary btn-lg' %>
 
 <%= link_to 'Генератор расписания', '/seances/generator', :class => 'btn btn-primary btn-lg' %>
+
+<%= link_to 'Копирование расписания', '/seances/duplicator', :class => 'btn btn-primary btn-lg' %>
 
 <br><br>

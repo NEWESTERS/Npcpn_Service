@@ -2,24 +2,26 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group">
-    <%= f.label 'Username' %><br />
+    <%= f.label 'Логин' %><br />
     <%= f.text_field :email, autofocus: true, :class => 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %><br />
+    <%= f.label 'Пароль' %><br />
     <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="form-group">
-      <%= f.label :remember_me %>
-      <%= f.check_box :remember_me, :class => 'form-control' %>
+      <label><%= f.check_box :remember_me, :class => 'form-control' %> Запомнить</label>
     </div>
   <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Вход", :class => "btn btn-primary btn-lg btn-block" %>
+  
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="actions col-md-4">
+      <%= f.submit "Вход", :class => "btn btn-primary btn-lg btn-block" %>
+    </div>
   </div>
 <% end %>
 

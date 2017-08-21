@@ -11,18 +11,41 @@ class SeancesController < ApplicationController
   def generator
   end
 
+  # дублирование расписания с одной даты на другую
+  def duplicate
+    @target = params[:target].split('-')
+    @source = Seance.where("to_char(date, 'DD-MM-YYYY') = ?", params[:source])
+    # копируем каждый сеанс по отдельности
+    @source.map do |e| 
+      @seance = Seance.new
+      # записываем время от источника и дату от цели
+      @seance.date = Time.new(@target[2].to_i, @target[1].to_i, @target[0].to_i, e.date.hour, e.date.min, 0).advance(hours: 3)
+      @seance.doctor_id = e.doctor_id
+      @seance.save 
+    end
+    redirect_to seances_path(date: params[:target])
+  end
+
+  def duplicator
+  end
+
+  # удаление сеансов в заданную дату у заданного врача
   def clear(doc, date)
-    # @arr = Seance.where("strftime('%d-%m-%Y', date) = ? and doctor_id = ?", date, doc)
     @arr = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and doctor_id = ?", date, doc)
     @arr.each { |e| e.destroy }
   end
 
+  # генерация расписания
   def generate
+    # удаляем существующее расписание 
     clear(params[:doctor], params[:date])
-
+    # в переменной current будет храниться время, записываемое в данный момент
+    # в переменной end будет храниться время, до которого будет выполняться цикл создания сеансов
+    # записываем в current время начала приёма
     @current = params[:date] + '/' + params[:start_hour] + ':' + params[:start_minute]
+    # .advance(hours: 3) — костыль для локализации времени, без него время смещается на 3 часа от нужного
     @current = Time.strptime(@current, '%d-%m-%Y/%H:%M').advance(hours: 3)
-
+    # если есть перерыв, то в end записываем начало перерыва, иначе — конец приёма
     if params[:break] == '1'
       @end = params[:date] + '/' + params[:break_start_hour] + ':' + params[:break_start_minute]     
       @end = Time.strptime(@end, '%d-%m-%Y/%H:%M').advance(hours: 3)
@@ -30,19 +53,20 @@ class SeancesController < ApplicationController
       @end = params[:date] + '/' + params[:end_hour] + ':' + params[:end_minute]
       @end = Time.strptime(@end, '%d-%m-%Y/%H:%M').advance(hours: 3)      
     end
-
+    # length — длительность приёма
     @length = params[:length].to_i
     @doctor_id = params[:doctor].to_i
-
+    # цикл, создающий сеансы во временном интервале от current до end
     while @current < @end
       @seance = Seance.new
       @seance.date = @current
       @seance.doctor_id = @doctor_id
       @seance.save
-
+      # смещаем current на время приёма
       @current = @current.advance(minutes: @length)    
     end
-
+    # если есть перерыв, то записываем в current конец перерыва, а в end — конец приёма
+    # затем снова повторяем цикл создания сеансов
     if params[:break] == '1'
       @current = params[:date] + '/' + params[:break_end_hour] + ':' + params[:break_end_minute]    
       @current = Time.strptime(@current, '%d-%m-%Y/%H:%M').advance(hours: 3)
@@ -54,7 +78,6 @@ class SeancesController < ApplicationController
         @seance.date = @current
         @seance.doctor_id = @doctor_id
         @seance.save
-
         @current = @current.advance(minutes: @length)    
       end
     end    

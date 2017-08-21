@@ -7,6 +7,7 @@
     <tr>
       <th>№</th>
       <th>ФИО</th>
+      <th>Степень</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +16,8 @@
     <% @doctors.each do |doctor| %>
       <tr>
         <td><%= doctor.id %></td>
-        <td><%= doctor.last_name + ' ' + doctor.name + ' ' + doctor.patronymic %></td>
+        <td><%= doctor.full_name %></td>
+        <td><%= (rank = doctor.rank).nil? ? '—' : rank %></td>
         <td><%= link_to 'Подробнее', doctor %></td>
         <td><%= link_to 'Изменить', edit_doctor_path(doctor) %></td>
         <td><%= link_to 'Удалить', doctor, method: :delete, data: { confirm: 'Подтвердите удаление' } %></td>

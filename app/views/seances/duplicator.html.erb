@@ -1,0 +1,54 @@
+<h1>Копирование расписания сеансов</h1>
+
+<%= form_tag('/seances/duplicate', :method => 'get') do %>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="form-group col-md-5">
+      <label for="source">Источник</label>
+      <input type="text" class="form-control" id="source" name="source" placeholder="Выберите дату (дд-мм-гггг)" required>
+    </div>
+
+    <div class="form-group col-md-5">
+      <label for="target">Цель</label>
+      <input type="text" class="form-control" id="target" name="target" placeholder="Выберите дату (дд-мм-гггг)" required>
+    </div>
+  </div>
+
+  <div class="row" id="warning" style="display: none;">
+    <p class="bg-warning"> На выбранную дату нет расписания</p>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4"></div>
+    <div class="form-group col-md-4">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Копировать расписание</button>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-md-5"></div>
+  <div class="col-md-2">
+    <%= link_to 'Назад', '/seances', :class => 'btn btn-default' %>  
+  </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function(){
+      $("#source").datepicker({
+        dateFormat: "dd-mm-yy"
+      });
+      $("#target").datepicker({
+        dateFormat: "dd-mm-yy",
+        minDate: 0
+      });
+      $("#source").inputmask("99-99-9999");
+      $("#target").inputmask("99-99-9999");
+    });
+    $('#break').trigger('change');
+</script>
+<br>
+
+
+
+

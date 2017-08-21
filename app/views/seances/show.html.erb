@@ -14,8 +14,8 @@
       <tr>
         <td><%= l @seance.date, :format => :date %></td>
         <td><%= l @seance.date, :format => :time %></td>
-        <td><%= (doc = @seance.doctor).nil? ? 'Отсутствует' : doc.last_name + ' ' + doc.name + ' ' + doc.patronymic %></td>
-        <td><%= (cli = @seance.client).nil? ? '—' : cli.last_name + ' ' + cli.name + ' ' + cli.patronymic %></td>
+        <td><%= (doc = @seance.doctor).nil? ? 'Отсутствует' : doc.full_name %></td>
+        <td><%= (cli = @seance.client).nil? ? '—' : cli.full_name %></td>
       </tr>
   </tbody>
 </table>

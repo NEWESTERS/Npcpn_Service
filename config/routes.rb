@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'app/add'
   get 'seances/generator'
   get 'seances/generate'
+  get 'seances/duplicate'
+  get 'seances/duplicator'
   get 'seances/fix'
 
   devise_scope :user do

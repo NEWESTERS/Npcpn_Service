@@ -7,7 +7,7 @@
 <div class="col-md-2">
 <br>
 <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Важная информация</button>
+<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Важная информация</button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -57,12 +57,16 @@
   <div class="row">
 	  <div class="form-group col-md-4">
 	    <label for="birthdate">Дата рождения</label>
-	    <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Выберите дату" required>
+	    <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Выберите дату (дд-мм-гггг)" required>
 	  </div>
+
+    <script type="text/javascript">
+      
+    </script>
 	  <div class="form-group col-md-8">
 	  	<br />
 	  	<label><input type="checkbox" name="is_moscow"> Наличие Московской прописки*</label><br />
-	  	<label class="text-warning">*при отсутствии Московской прописки услуги предоставляются на платной основе</label>
+	  	<label class="text-warning">*при отсутствии Московской прописки услуги предоставляются на платной основе (информация по телефону 8-985-265-51-01)</label>
 	  </div>
   </div>
 
@@ -72,7 +76,7 @@
   <div class="row">
 	  <div class="form-group col-md-6">
 	    <label for="input_email">E-mail</label>
-	    <input type="email" class="form-control" id="input_email" name="email" placeholder="example@gmail.com" required>
+	    <input type="email" class="form-control" id="input_email" name="email" placeholder="example@gmail.com">
 	  </div>
 
 	  <div class="form-group col-md-6">
@@ -87,7 +91,7 @@
   <div class="row">
 	  <div class="form-group col-md-4">
 	    <label for="datepicker">Дата</label>
-	    <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Выберите дату" required>
+	    <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Выберите дату (дд-мм-гггг)" required>
 	  </div>
 
 	  <div class="form-group col-md-6">
@@ -123,6 +127,7 @@
     		minDate: min,
     		altFormat: "dd.mm.yy"
     	});
+      
     	$("#birthdate").datepicker({
     		dateFormat: "dd-mm-yy",
     		changeYear: true,
@@ -130,5 +135,8 @@
     		changeMonth: true,
     		altFormat: "dd.mm.yy"
     	});
+
+      $("#birthdate").inputmask("99-99-9999");
+      $("#datepicker").inputmask("99-99-9999")
   	});
 </script>

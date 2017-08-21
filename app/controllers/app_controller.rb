@@ -17,7 +17,7 @@ class AppController < ApplicationController
   	  # извлекаем список врачей без повторов
   	  @result = @result.collect { |p| p.doctor }.uniq
   	  # извлекаем ФИО врача
-  	  @result = @result.collect { |p| [p.last_name + ' ' + p.name + ' ' + p.patronymic, p.id] }
+  	  @result = @result.collect { |p| [p.full_name + ((rank = p.rank).nil? ? '' : (' — ' + rank)), p.id] }
   	when "seance"
   	  # находим все сеансы выбранного врача в выбранный день
   	  @result = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and doctor_id = ?", params[:date], params[:doctor_id])
@@ -34,20 +34,24 @@ class AppController < ApplicationController
   end
 
   def add # метод, заполняющий поля БД
-  	# создаём новую запись пациента в БД и заполнияем поля
-  	@client = Client.new
-  	@client.last_name = params[:last_name]
-  	@client.name = params[:name]
-  	@client.patronymic = params[:patronymic]
-  	@client.birthdate = Date.strptime(params[:birthdate], '%d-%m-%Y')
-  	@client.email = params[:email]
-  	@client.phone = params[:phone]
-  	@client.is_moscow = params[:is_moscow]
-  	@client.save
-  	# находим сеанс, на который производится запись и задаём пациента
-  	@seance = Seance.find(params[:seance])
-  	@seance.client = @client
-  	@seance.save
+    # проверяем, зарегистрирован ли пациент в базе
+    @client = Client.where("name = ? and last_name = ? and phone = ?", params[:name], params[:last_name], params[:phone])[0]
+    if @client.nil? then
+    	# создаём новую запись пациента в БД и заполнияем поля
+    	@client = Client.new
+    	@client.last_name = params[:last_name]
+    	@client.name = params[:name]
+    	@client.patronymic = params[:patronymic]
+    	@client.birthdate = Date.strptime(params[:birthdate], '%d-%m-%Y')
+    	@client.email = params[:email]
+    	@client.phone = params[:phone]
+    	@client.is_moscow = params[:is_moscow]
+    	@client.save
+    end
+    # находим сеанс, на который производится запись и задаём пациента
+    @seance = Seance.find(params[:seance])
+    @seance.client = @client
+    @seance.save
     # перенаправление на страницу с информацией о записи
   	redirect_to :action => "show", :seance_id => @seance.id
   end

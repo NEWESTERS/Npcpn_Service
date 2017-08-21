@@ -18,12 +18,12 @@
 
   <div class="form-group">
     <%= f.label 'Врач' %>
-    <%= f.select :doctor_id, Doctor.all.collect { |p| [p.last_name + ' ' + p.name + ' ' + p.patronymic, p.id] }, {}, :class => 'form-control' %>
+    <%= f.select :doctor_id, Doctor.all.collect { |p| [p.full_name, p.id] }, {}, :class => 'form-control' %>
   </div>
 
   <div class="form-group">
     <%= f.label 'Пациент' %>
-    <%= f.select :client_id, Client.all.collect { |p| [p.last_name + ' ' + p.name + ' ' + p.patronymic, p.id] }, {:include_blank => 'Empty'}, :class => 'form-control' %>
+    <%= f.select :client_id, Client.all.collect { |p| [p.full_name, p.id] }, {:include_blank => 'Empty'}, :class => 'form-control' %>
   </div>
 
   <div class="actions">
