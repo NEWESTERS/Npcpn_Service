@@ -19,7 +19,7 @@ class SeancesController < ApplicationController
     @source.map do |e| 
       @seance = Seance.new
       # записываем время от источника и дату от цели
-      @seance.date = Time.new(@target[2].to_i, @target[1].to_i, @target[0].to_i, e.date.hour, e.date.min, 0).advance(hours: 3)
+      @seance.date = Time.new(@target[2].to_i, @target[1].to_i, @target[0].to_i, e.date.hour, e.date.min, 0) #.advance(hours: 3)
       @seance.doctor_id = e.doctor_id
       @seance.save 
     end
@@ -44,14 +44,14 @@ class SeancesController < ApplicationController
     # записываем в current время начала приёма
     @current = params[:date] + '/' + params[:start_hour] + ':' + params[:start_minute]
     # .advance(hours: 3) — костыль для локализации времени, без него время смещается на 3 часа от нужного
-    @current = Time.strptime(@current, '%d-%m-%Y/%H:%M').advance(hours: 3)
+    @current = Time.strptime(@current, '%d-%m-%Y/%H:%M') #.advance(hours: 3)
     # если есть перерыв, то в end записываем начало перерыва, иначе — конец приёма
     if params[:break] == '1'
       @end = params[:date] + '/' + params[:break_start_hour] + ':' + params[:break_start_minute]     
-      @end = Time.strptime(@end, '%d-%m-%Y/%H:%M').advance(hours: 3)
+      @end = Time.strptime(@end, '%d-%m-%Y/%H:%M') #.advance(hours: 3)
     else
       @end = params[:date] + '/' + params[:end_hour] + ':' + params[:end_minute]
-      @end = Time.strptime(@end, '%d-%m-%Y/%H:%M').advance(hours: 3)      
+      @end = Time.strptime(@end, '%d-%m-%Y/%H:%M') #.advance(hours: 3)      
     end
     # length — длительность приёма
     @length = params[:length].to_i
@@ -69,9 +69,9 @@ class SeancesController < ApplicationController
     # затем снова повторяем цикл создания сеансов
     if params[:break] == '1'
       @current = params[:date] + '/' + params[:break_end_hour] + ':' + params[:break_end_minute]    
-      @current = Time.strptime(@current, '%d-%m-%Y/%H:%M').advance(hours: 3)
+      @current = Time.strptime(@current, '%d-%m-%Y/%H:%M') #.advance(hours: 3)
       @end = params[:date] + '/' + params[:end_hour] + ':' + params[:end_minute]
-      @end = Time.strptime(@end, '%d-%m-%Y/%H:%M').advance(hours: 3)
+      @end = Time.strptime(@end, '%d-%m-%Y/%H:%M') #.advance(hours: 3)
 
       while @current < @end
         @seance = Seance.new
