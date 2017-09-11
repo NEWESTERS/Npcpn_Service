@@ -17,6 +17,7 @@
 //= require jquery.inputmask.numeric.extensions
 //= require jquery.inputmask.date.extensions
 //= require jquery-ui/widgets/datepicker
+//= require jquery-tablesorter
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .

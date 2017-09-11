@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cliniq</title>
+    <title>Онлайн-запись на приём | НПЦ им. З.П.Соловьёва</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,7 +11,7 @@
 
   <body>
   <% if browser.ie?("<9") %>
-    <h3 style="color: red">Вы используете старую версию браузера, содержимое может функционировать некорректно</h3>
+    <h3 style="color: red">Вы используете старую версию интернет-браузера, содержимое может функционировать некорректно</h3>
   <% end %>
     <% if !current_user.nil? %>
       <div class="row hide-print">

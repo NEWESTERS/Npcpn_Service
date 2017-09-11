@@ -17,6 +17,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @seances = Seance.where('client_id = ?', @client.id)
   end
 
   # GET /clients/new

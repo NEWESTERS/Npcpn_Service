@@ -33,6 +33,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # Field validation
 gem 'jquery-inputmask-rails'
+# Table sorting
+gem 'jquery-tablesorter'
 # Check browser
 gem "browser"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

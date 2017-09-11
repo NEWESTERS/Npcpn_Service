@@ -90,7 +90,7 @@ class SeancesController < ApplicationController
   def index
     @date = params[:date].blank? ? Time.now.strftime("%d-%m-%Y") : params[:date]
     # @seances = Seance.where("strftime('%d-%m-%Y', date) = ?", @date)
-    @seances = Seance.where("to_char(date, 'DD-MM-YYYY') = ?", @date)
+    @seances = Seance.where("to_char(date, 'DD-MM-YYYY') = ?", @date).sort_by{ |s| [s.doctor.full_name, s.date] }
     # @seances = Seance.all
   end
 
