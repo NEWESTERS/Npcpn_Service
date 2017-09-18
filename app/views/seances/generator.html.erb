@@ -26,8 +26,8 @@
       <div id="start-time" class="row">
       <div class="col-md-5">
         <select id="start-hour" name="start_hour" class="form-control">
-          <% 24.times do |num| %>
-            <option value="<%= num %>"><%= num %></option>
+          <% 15.times do |num| %>
+            <option value="<%= num %>"><%= num + 6 %></option>
           <% end %>
         </select>
       </div>
@@ -47,8 +47,8 @@
       <div id="end-time" class="row">
       <div class="col-md-5">
         <select id="end-hour" name="end_hour" class="form-control">
-          <% 24.times do |num| %>
-            <option value="<%= num %>"><%= num %></option>
+          <% 15.times do |num| %>
+            <option value="<%= num %>"><%= num + 6 %></option>
           <% end %>
         </select>
       </div>
@@ -77,16 +77,16 @@
       <div id="break-start-time" class="row">
       <div class="col-md-5">
         <select id="break-start-hour" name="break_start_hour" class="form-control">
-          <% 24.times do |num| %>
-            <option value="<%= num %>"><%= num %></option>
+          <% 15.times do |num| %>
+            <option value="<%= num %>"><%= num + 6 %></option>
           <% end %>
         </select>
       </div>
       <div class="col-md-1">:</div>
       <div class="col-md-5">
         <select id="break-start-minute" name="break_start_minute" class="form-control">
-          <% 60.times do |num| %>
-            <option value="<%= num %>"><%= num %></option>
+          <% 12.times do |num| %>
+            <option value="<%= num * 5 %>"><%= num * 5 %></option>
           <% end %>
         </select>
       </div>
@@ -98,16 +98,16 @@
       <div id="break-end-time" class="row">
       <div class="col-md-5">
         <select id="break-end-hour" name="break_end_hour" class="form-control">
-          <% 24.times do |num| %>
-            <option value="<%= num %>"><%= num %></option>
+          <% 15.times do |num| %>
+            <option value="<%= num %>"><%= num + 6 %></option>
           <% end %>
         </select>
       </div>
       <div class="col-md-1">:</div>
       <div class="col-md-5">
         <select id="break-end-minute" name="break_end_minute" class="form-control">
-          <% 60.times do |num| %>
-            <option value="<%= num %>"><%= num %></option>
+          <% 12.times do |num| %>
+            <option value="<%= num * 5 %>"><%= num * 5 %></option>
           <% end %>
         </select>
       </div>
