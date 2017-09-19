@@ -15,10 +15,12 @@
 		<td><b>Номер телефона</b></td>
 		<td><%= @client.phone %></td>
 	</tr>
-	<tr>
-		<td><b>Email</b></td>
-		<td><%= @client.email %></td>
-	</tr>
+	<% if !@client.email.empty? %>
+		<tr>
+			<td><b>Email</b></td>
+			<td><%= @client.email %></td>
+		</tr>
+	<% end %>
 </table>
 
 <h3>Записи пациента</h3>
