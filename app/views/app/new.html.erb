@@ -95,7 +95,7 @@
   <div class="row">
     <div class="form-group col-md-3">
       <label for="doctor">Филиал</label>
-      <%= select_tag 'affilate', options_for_select( Affilate.all.collect{ |u| [u.name, u.id] } ), :class => 'form-control' %>
+      <%= select_tag 'affilate', options_for_select( Affilate.where('name != ?', 'Admin').collect{ |u| [u.name, u.id] } ), :class => 'form-control' %>
     </div>
 
 	  <div class="form-group col-md-3">
