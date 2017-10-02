@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Филиалы</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Название</th>
+      <th>Адрес</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @affilates.each do |affilate| %>
+      <tr>
+        <td><%= affilate.id %></td>
+        <td><%= a_name = affilate.name %></td>
+        <td><%= affilate.address %></td>
+        <td><%= link_to 'Подробнее', affilate %></td>
+        <td><%= link_to 'Изменить', edit_affilate_path(affilate) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Новый филиал', new_affilate_path %>

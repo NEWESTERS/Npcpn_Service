@@ -11,7 +11,7 @@ class AppController < ApplicationController
   	case params[:to_find]
   	when "doctor"
   	  # находим все сеансы в выбранный день
-  	  @result = Seance.where("to_char(date, 'DD-MM-YYYY') = ?", params[:date])
+  	  @result = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and affilate_id = ?", params[:date], params[:affilate])
       # извлекаем только свободные сеансы
       @result = @result.select { |p| p.client.nil? }
   	  # извлекаем список врачей без повторов

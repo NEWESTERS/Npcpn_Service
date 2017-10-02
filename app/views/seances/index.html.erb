@@ -23,7 +23,10 @@
       <th>Время</th>
       <th>Врач</th>
       <th>Пациент</th>
-      <th colspan="3"></th>
+      <% if current_user.affilate.name == 'Admin' %>
+        <th>Филиал</th>
+      <% end %>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -36,8 +39,12 @@
         <% if seance.client.nil? %>
           <td>—</td>
         <% else %>
-          <td><%= link_to ((cli = seance.client).last_name + ' ' + cli.name + ' ' + cli.patronymic), client_path(seance.client)%></td>
+          <td><%= link_to ((cli = seance.client).last_name + ' ' + cli.name + ' ' + cli.patronymic), client_path(seance.client) %></td>
         <% end %>
+        <% if current_user.affilate.name == 'Admin' %>
+          <td><%= link_to seance.affilate.name, affilate_path(seance.affilate) %></td>
+        <% end %>
+        <td><%= link_to 'Отменить', 'seances/emptify/?id=' + seance.id.to_s, data: { confirm: 'Подтвердите отмену записи пациента' } %></td>
         <td><%= link_to 'Подробнее', seance %></td>
         <td><%= link_to 'Изменить', edit_seance_path(seance) %></td>
         <td><%= link_to 'Удалить', seance, method: :delete, data: { confirm: 'Подтвердите действие' } %></td>

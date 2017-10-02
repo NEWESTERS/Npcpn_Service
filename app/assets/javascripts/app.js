@@ -20,10 +20,22 @@ function app_update(source, target) {
 
 // при выборе даты в список врачей добавляются элементы
 $(document).on('change', '#datepicker', function() {
-	src = $('#datepicker').val();
+	src = [$('#affilate').val(), $('#datepicker').val()];
 	data = {	// объект, который будет отправлен на сервер для запроса
 		to_find: 'doctor',	// какие данные нужно искать
-		date: src 	// по какому значению нужно искать
+		date: src[1], 	// по какому значению нужно искать
+		affilate: src[0]
+	};
+	app_update(data, data.to_find);
+	$('#datepicker').attr('placeholder', '');
+});
+
+$(document).on('change', '#affilate', function() {
+	src = [$('#affilate').val(), $('#datepicker').val()];
+	data = {	// объект, который будет отправлен на сервер для запроса
+		to_find: 'doctor',	// какие данные нужно искать
+		date: src[1], 	// по какому значению нужно искать
+		affilate: src[0]
 	};
 	app_update(data, data.to_find);
 	$('#datepicker').attr('placeholder', '');
@@ -37,6 +49,7 @@ $(document).on('change', '#doctor', function() {
 		date: src,
 		doctor_id: $('#doctor' + ' option:selected').val()
 	};
+	$("#seance").empty();
 	app_update(data, data.to_find);
 });
 

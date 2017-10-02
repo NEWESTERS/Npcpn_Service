@@ -1,0 +1,27 @@
+<%= form_for(affilate) do |f| %>
+  <% if affilate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(affilate.errors.count, "error") %> prohibited this affilate from being saved:</h2>
+
+      <ul>
+      <% affilate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag "Адрес"  %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= label_tag "Краткое название" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
