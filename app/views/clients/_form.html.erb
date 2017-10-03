@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+  <div class="form-group">
+    <%= f.label 'Фамилия' %>
+    <%= f.text_field :last_name, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label 'Имя' %>
+    <%= f.text_field :name, :class => 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :patronymic %>
-    <%= f.text_field :patronymic %>
+  <div class="form-group">
+    <%= f.label 'Отчество' %>
+    <%= f.text_field :patronymic, :class => 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Сохранить', :class => 'btn btn-lg btn-primary' %>
   </div>
 <% end %>

@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= label_tag "Адрес"  %>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, :class => 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= label_tag "Краткое название" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Сохранить', :class => 'btn btn-lg btn-primary' %>
   </div>
 <% end %>

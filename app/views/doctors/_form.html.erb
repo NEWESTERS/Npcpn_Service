@@ -31,10 +31,14 @@
     <%= f.text_field :rank, :class => 'form-control' %>
   </div>
   
-  <div class="form-group">
-    <%= f.label 'Филиал' %>
-    <%= f.select :affilate_id, Affilate.all.collect { |p| [p.name, p.id] }, {}, :class => 'form-control' %>
-  </div>
+  <% if current_user.affilate.name == "Admin" %>
+    <div class="form-group">
+      <%= f.label 'Филиал' %>
+      <%= f.select :affilate_id, Affilate.all.collect { |p| [p.name, p.id] }, {}, :class => 'form-control' %>
+    </div>
+  <% else %>
+    <%= f.hidden_field :affilate_id, :value => current_user.affilate_id %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit 'Сохранить', :class => 'btn btn-primary btn-lg' %>

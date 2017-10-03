@@ -34,6 +34,9 @@
               <li><%= link_to 'Расписание', '/seances' %></li>
               <li><%= link_to 'Пациенты', '/clients' %></li>
               <li><%= link_to 'Врачи', '/doctors' %></li>
+              <% if current_user.affilate.name == 'Admin' %>
+                <li><%= link_to 'Филиалы', '/affilates' %></li>
+              <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to 'Выход', destroy_user_session_path, :method => :delete %></li>
