@@ -39,10 +39,10 @@
         <% if seance.client.nil? %>
           <td>—</td>
         <% else %>
-          <td><%= link_to ((cli = seance.client).last_name + ' ' + cli.name + ' ' + cli.patronymic), client_path(seance.client) %></td>
+          <td><%= link_to seance.client.full_name, client_path(seance.client) %></td>
         <% end %>
         <% if current_user.affilate.name == 'Admin' %>
-          <td><%= link_to seance.affilate.name, affilate_path(seance.affilate) %></td>
+          <td><%= link_to (aff = seance.doctor.affilate).name, affilate_path(aff) %></td>
         <% end %>
         <td><%= link_to 'Отменить', 'seances/emptify/?id=' + seance.id.to_s, data: { confirm: 'Подтвердите отмену записи пациента' } %></td>
         <td><%= link_to 'Подробнее', seance %></td>

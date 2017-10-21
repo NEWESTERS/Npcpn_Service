@@ -5,4 +5,8 @@ class Doctor < ApplicationRecord
 	def full_name
 		self.last_name + ' ' + self.name + ' ' + self.patronymic
 	end
+
+	def affilate_name
+		(aff = self.affilate).nil? ? 'Филиал не назначен' : aff.name
+	end
 end

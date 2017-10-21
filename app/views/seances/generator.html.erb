@@ -21,7 +21,7 @@
     <div class="form-group col-md-6">
       <label for="doctor">Врач</label>
      	<%= select_tag 'doctor', options_for_select(Doctor.all
-     		.collect{ |u| [u.last_name + ' ' + u.name + ' ' + u.patronymic, u.id] }), :class => 'form-control' %>
+     		.collect{ |u| [u.full_name, u.id] }), :class => 'form-control' %>
     </div>
   </div>
 
@@ -36,8 +36,8 @@
       <div id="start-time" class="row">
       <div class="col-md-5">
         <select id="start-hour" name="start_hour" class="form-control">
-          <% 15.times do |num| %>
-            <option value="<%= num + 6 %>"><%= num + 6 %></option>
+          <% (6..20).each do |num| %>
+            <option value="<%= num %>"><%= num %></option>
           <% end %>
         </select>
       </div>
@@ -57,8 +57,8 @@
       <div id="end-time" class="row">
       <div class="col-md-5">
         <select id="end-hour" name="end_hour" class="form-control">
-          <% 15.times do |num| %>
-            <option value="<%= num + 6 %>"><%= num + 6 %></option>
+          <% (6..20).each do |num| %>
+            <option value="<%= num %>"><%= num %></option>
           <% end %>
         </select>
       </div>
@@ -87,8 +87,8 @@
       <div id="break-start-time" class="row">
       <div class="col-md-5">
         <select id="break-start-hour" name="break_start_hour" class="form-control">
-          <% 15.times do |num| %>
-            <option value="<%= num + 6 %>"><%= num + 6 %></option>
+          <% (6..20).each do |num| %>
+            <option value="<%= num %>"><%= num %></option>
           <% end %>
         </select>
       </div>
@@ -108,8 +108,8 @@
       <div id="break-end-time" class="row">
       <div class="col-md-5">
         <select id="break-end-hour" name="break_end_hour" class="form-control">
-          <% 15.times do |num| %>
-            <option value="<%= num + 6 %>"><%= num + 6 %></option>
+          <% (6..20).each do |num| %>
+            <option value="<%= num %>"><%= num %></option>
           <% end %>
         </select>
       </div>

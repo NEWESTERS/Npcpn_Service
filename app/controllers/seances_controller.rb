@@ -21,7 +21,7 @@ class SeancesController < ApplicationController
       # записываем время от источника и дату от цели
       @seance.date = Time.new(@target[2].to_i, @target[1].to_i, @target[0].to_i, e.date.hour, e.date.min, 0) #.advance(hours: 3)
       @seance.doctor_id = e.doctor_id
-      @seance.affilate_id = current_user.affilate_id
+      @seance.affilate_id = e.affilate_id
       @seance.save 
     end
     redirect_to seances_path(date: params[:target])
@@ -97,7 +97,8 @@ class SeancesController < ApplicationController
     if current_user.affilate.name == 'Admin'
       @seances = Seance.where("to_char(date, 'DD-MM-YYYY') = ?", @date).sort_by{ |s| [s.doctor.full_name, s.date] }
     else
-      @seances = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and affilate_id = ?", @date, current_user.affilate_id).sort_by{ |s| [s.doctor.full_name, s.date] }
+      @seances = Seance.joins(:doctor)
+      @seances = @seances.where("to_char(date, 'DD-MM-YYYY') = ? and doctors.affilate_id = ?", @date, current_user.affilate_id).sort_by{ |s| [s.doctor.full_name, s.date] }
     end
     # @seances = Seance.all
   end
