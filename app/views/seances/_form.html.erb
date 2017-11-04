@@ -18,7 +18,11 @@
 
   <div class="form-group">
     <%= f.label 'Врач' %>
-    <%= f.select :doctor_id, Doctor.all.collect { |p| [p.full_name, p.id] }, {}, :class => 'form-control' %>
+    <% if current_user.affilate.name == 'Admin' %>
+      <%= f.select :doctor_id, Doctor.all.collect { |p| [p.full_name + ' — ' + p.affilate_name, p.id] }, {}, :class => 'form-control' %>
+    <% else %>
+      <%= f.select :doctor_id, Doctor.where('affilate_id = ?', current_user.affilate_id).collect { |p| [p.full_name, p.id] }, {}, :class => 'form-control' %>
+    <% end %>
   </div>
 
   <div class="form-group">
@@ -26,7 +30,14 @@
     <%= f.select :client_id, Client.all.collect { |p| [p.full_name, p.id] }, {:include_blank => 'Empty'}, :class => 'form-control' %>
   </div>
 
+  <% if false %>
+    <div class="form-group">
+      <%= f.label 'Филиал' %>
+      <%= f.select :affilate_id, Affilate.all.collect { |p| [p.name, p.id] }, {}, :class => 'form-control' %>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= f.submit :class => 'btn btn-primary btn-lg' %>
+    <%= f.submit 'Сохранить', :class => 'btn btn-primary btn-lg' %>
   </div>
 <% end %>

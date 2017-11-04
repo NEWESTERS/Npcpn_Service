@@ -5,9 +5,12 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>№</th>
+      <th>ID</th>
       <th>ФИО</th>
-      <th>Степень</th>
+      <th>Информация</th>
+      <% if current_user.affilate.name == 'Admin' %>
+        <th>Филиал</th>
+      <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +21,13 @@
         <td><%= doctor.id %></td>
         <td><%= doctor.full_name %></td>
         <td><%= (rank = doctor.rank).nil? ? '—' : rank %></td>
+        <% if current_user.affilate.name == 'Admin' %>
+          <td>
+            <% if !(aff = doctor.affilate).nil? %>
+              <%= link_to doctor.affilate.name, affilate_path(doctor.affilate) %>
+            <% else %>—<% end %>
+          </td>
+        <% end %>
         <td><%= link_to 'Подробнее', doctor %></td>
         <td><%= link_to 'Изменить', edit_doctor_path(doctor) %></td>
         <td><%= link_to 'Удалить', doctor, method: :delete, data: { confirm: 'Подтвердите удаление' } %></td>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h3 style="margin-bottom: -20px;">Филиал</h3>
+<h1><%= @affilate.name %></h1>
+
+<table class="table table-hover">
+	<tr>
+		<td><b>Адрес</b></td>
+		<td><%= @affilate.address %></td>
+	</tr>
+</table>
+
+<%= link_to 'Изменить', edit_affilate_path(@affilate) %> |
+<%= link_to 'Назад', affilates_path %>

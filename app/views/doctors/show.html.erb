@@ -2,8 +2,12 @@
 <h1><%= @doctor.full_name %></h1>
 <table class="table table-hover">
 	<tr>
-		<td><b>Степень</b></td>
+		<td><b>Информация</b></td>
 		<td><%= (rank = @doctor.rank).nil? ? '—' : rank %></td>
+	</tr>
+	<tr>
+		<td><b>Филиал</b></td>
+		<td><%= (aff = @doctor.affilate).nil? ? '—' : aff.name %></td>
 	</tr>
 </table>
 

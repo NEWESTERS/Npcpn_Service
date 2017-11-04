@@ -14,20 +14,39 @@
     <h3 style="color: red">Вы используете старую версию интернет-браузера, содержимое может функционировать некорректно</h3>
   <% end %>
     <% if !current_user.nil? %>
-      <div class="row hide-print">
-        <div class="col-md-3"><%= link_to 'Запись', root_path, :class => "btn btn-primary btn-lg btn-block" %></div>
+      <nav class="navbar navbar-default hide-print navbar-fixed-top container">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"><h5 style="margin-top: -10px;">Филиал: </h5><h3 style="margin-top: -10px;"><%= current_user.affilate.name %></h3></a>
+          </div>
 
-        <div class="col-md-3"><%= link_to 'Расписание', '/seances', :class => "btn btn-primary btn-lg btn-block" %></div>
-
-        <div class="col-md-2"><%= link_to 'Пациенты', '/clients', :class => "btn btn-primary btn-lg btn-block" %></div>
-
-        <div class="col-md-2"><%= link_to 'Врачи', '/doctors', :class => "btn btn-primary btn-lg btn-block" %></div>
-
-        <div class="col-md-2"><%= link_to 'Выход', destroy_user_session_path, :method => :delete, :class => "btn btn-danger btn-lg btn-block" %></div>
-      </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><%= link_to 'Запись', root_path %></li>
+              <li><%= link_to 'Расписание', '/seances' %></li>
+              <li><%= link_to 'Пациенты', '/clients' %></li>
+              <li><%= link_to 'Врачи', '/doctors' %></li>
+              <% if current_user.affilate.name == 'Admin' %>
+                <li><%= link_to 'Филиалы', '/affilates' %></li>
+              <% end %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to 'Выход', destroy_user_session_path, :method => :delete %></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+      <div class="container" style="padding: 20px;"></div>
     <% end %>
-    
-  	<div class="container box-shadow">
+  	<div class="container box-shadow"">
       <% if current_user.nil? %>
         <%= link_to 'Вход для персонала', '/sign_in', :class => "hide-print" %>
       <% end %>

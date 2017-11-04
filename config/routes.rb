@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :affilates
   get 'menu/view'
 
   devise_for :users
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get 'seances/duplicate'
   get 'seances/duplicator'
   get 'seances/fix'
+  get 'seances/emptify'
 
   devise_scope :user do
     get 'sign_in', to: 'devise/sessions#new'

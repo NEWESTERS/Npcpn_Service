@@ -4,7 +4,11 @@ class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.json
   def index
-    @doctors = Doctor.all
+    if (current_affilate = current_user.affilate).name == 'Admin'
+      @doctors = Doctor.all
+    else
+      @doctors = Doctor.where("affilate_id = ?", current_affilate.id)
+    end   
   end
 
   # GET /doctors/1
@@ -69,6 +73,6 @@ class DoctorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_params
-      params.require(:doctor).permit(:name, :last_name, :patronymic, :rank)
+      params.require(:doctor).permit(:name, :last_name, :patronymic, :rank, :affilate_id)
     end
 end

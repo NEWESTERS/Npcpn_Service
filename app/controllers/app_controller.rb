@@ -11,18 +11,20 @@ class AppController < ApplicationController
   	case params[:to_find]
   	when "doctor"
   	  # находим все сеансы в выбранный день
-  	  @result = Seance.where("to_char(date, 'DD-MM-YYYY') = ?", params[:date])
+  	  @result = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and affilate_id = ?", params[:date], params[:affilate])
       # извлекаем только свободные сеансы
       @result = @result.select { |p| p.client.nil? }
   	  # извлекаем список врачей без повторов
   	  @result = @result.collect { |p| p.doctor }.uniq
   	  # извлекаем ФИО врача
   	  @result = @result.collect { |p| [p.full_name + ((rank = p.rank).nil? ? '' : (' — ' + rank)), p.id] }
+      if @result.blank? then @result = [['Нет cвободных врачей']] end
   	when "seance"
   	  # находим все сеансы выбранного врача в выбранный день
   	  @result = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and doctor_id = ?", params[:date], params[:doctor_id])
   	  # извлекаем время свободных сеансов
   	  @result = @result.select { |p| p.client.nil? }.collect { |p| [p.date.strftime('%H:%M'), p.id] }
+      if @result.blank? then @result = [['—']] end
     when "is_schedule"
       # находим все сеансы выбранного врача в выбранный день
       @query = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and doctor_id = ?", params[:date], params[:doctor_id])
