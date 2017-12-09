@@ -2,7 +2,7 @@
 
 <h1>Пациенты</h1>
 
-<table class="table table-hover">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -20,9 +20,9 @@
         <td><%= client.full_name %></td>
         <td><%= (date = client.birthdate).nil? ? '—' : l(date, :format => :date) %></td>
         <td><%= client.is_moscow == 'on' ? 'Имеется' : 'Отсутствует'  %></td>
-        <td><%= link_to 'Подробнее', client_path(client) %></td>
-        <td><%= link_to 'Изменить', edit_client_path(client) %></td>
-        <td><%= link_to 'Удалить', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Подробнее', client_path(client), :class => "btn-mini btn-more" %></td>
+        <td><%= link_to 'Изменить', edit_client_path(client), :class => "btn-mini btn-edit" %></td>
+        <td><%= link_to 'Удалить', client, method: :delete, data: { confirm: 'Подтвердите удаление данных о пациенте' }, :class => "btn-mini btn-delete" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'Новый пациент', new_client_path %>
+<%= link_to 'Новый пациент', new_client_path, :class => 'btn btn-primary btn-lg' %><br /><br />

@@ -1,26 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Дата</th>
-      <th>Время</th>
-      <th>Врач</th>
-      <th>Пациент</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <tr>
-        <td><%= l @seance.date, :format => :date %></td>
-        <td><%= l @seance.date, :format => :time %></td>
-        <td><%= (doc = @seance.doctor).nil? ? 'Отсутствует' : doc.full_name %></td>
-        <td><%= (cli = @seance.client).nil? ? '—' : cli.full_name %></td>
-      </tr>
-  </tbody>
+<h1>Сеанс №<%= @seance.id %></h1>
+<table class="table table-striped">
+  <tr>
+    <td><b>Дата</b></td>
+    <td><%= l @seance.date, :format => :date %></td>
+  </tr>
+  <tr>
+    <td><b>Время</b></td>
+    <td><%= l @seance.date, :format => :time %></td>
+  </tr>
+  <tr>
+    <td><b>Врач</b></td>
+    <td><%= (doc = @seance.doctor).nil? ? 'Отсутствует' : doc.full_name %></td>
+  </tr>
+  <tr>
+    <td><b>Пациент</b></td>
+    <td><%= (cli = @seance.client).nil? ? '—' : cli.full_name %></td>
+  </tr>
 </table>
 
 <%= link_to 'Изменить', edit_seance_path(@seance), :class => 'btn btn-primary btn-lg'  %> 
-<%= link_to 'Назад', seances_path, :class => 'btn btn-primary btn-lg'  %>
+<%= link_to 'Назад', seances_path(:date => @seance.date.strftime("%d-%m-%Y")), :class => 'btn btn-primary btn-lg'  %>
 
 <br><br>

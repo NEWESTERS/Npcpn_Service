@@ -2,5 +2,7 @@
 
 <%= render 'form', seance: @seance %>
 
-<%= link_to 'Показать', @seance %> |
-<%= link_to 'Назад', seances_path %>
+<br />
+<%= link_to 'Показать', @seance, :class => 'btn btn-primary btn-lg' %>
+<%= link_to 'Назад', seances_path(:date => @seance.date.strftime("%d-%m-%Y")), :class => 'btn btn-primary btn-lg' %>
+<br /><br />

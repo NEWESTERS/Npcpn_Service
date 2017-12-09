@@ -23,23 +23,26 @@
 	<% end %>
 </table>
 
-<h3>Записи пациента</h3>
-<table class="table table-hover">
-	<thead>
-		<th>Дата</th>
-		<th>Время</th>
-		<th>Врач</th>
-	</thead>
-	<tbody>
-		<% @seances.each do |seance| %>
-			<tr>
-				<td><%= l seance.date, :format => :date %></td>
-        		<td><%= l seance.date, :format => :time %></td>
-        		<td><%= link_to seance.doctor.full_name, doctor_path(seance.doctor)%></td>
-        	</tr>
-		<% end %>
-	</tbody>
-</table>
+<%= link_to 'Изменить', edit_client_path(@client), :class => "btn-mini btn-edit" %><br />
 
-<%= link_to 'Изменить', edit_client_path(@client) %> |
-<%= link_to 'Все пациенты', clients_path %>
+<% if !@seances.empty? %>
+	<h3>Записи пациента</h3>
+	<table class="table table-hover">
+		<thead>
+			<th>Дата</th>
+			<th>Время</th>
+			<th>Врач</th>
+		</thead>
+		<tbody>
+			<% @seances.each do |seance| %>
+				<tr>
+					<td><%= l seance.date, :format => :date %></td>
+	        		<td><%= l seance.date, :format => :time %></td>
+	        		<td><%= link_to seance.doctor.full_name, doctor_path(seance.doctor)%></td>
+	        	</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
+
+<%= link_to 'Все пациенты', clients_path, :class => "btn-mini btn-more" %>

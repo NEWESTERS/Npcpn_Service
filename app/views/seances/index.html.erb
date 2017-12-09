@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Сеансы</h1>
-<h4><%= @date %></h2>
+<h4><%= l @date, :format => :date %></h2>
 
 <%= form_tag('/seances', :method => 'get') do %>
   <div class="row">
@@ -10,30 +10,28 @@
       <input type="text" class="form-control" id="date" name="date" placeholder="Выберите дату" required>
     </div>
     <div class="form-group col-md-4">
-      <br>
-      <button type="submit" class="btn btn-primary">Показать</button>
+      <label for="btn-show">&nbsp;</label><br />
+      <button type="submit" class="btn btn-primary" id="btn-show">Показать</button>
     </div>
   </div>
 <% end %>
 
-<table class="table table-hover tablesorter" id="seance-table">
+<table class="table tablesorter table-striped" id="seance-table">
   <thead>
     <tr>
-      <th>Дата</th>
       <th>Время</th>
       <th>Врач</th>
       <th>Пациент</th>
       <% if current_user.affilate.name == 'Admin' %>
         <th>Филиал</th>
       <% end %>
-      <th colspan="4"></th>
+      <th colspan="2" width="10%"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @seances.each do |seance| %>
       <tr>
-        <td><%= l seance.date, :format => :date %></td>
         <td><%= l seance.date, :format => :time %></td>
         <td><%= link_to seance.doctor.full_name, doctor_path(seance.doctor)%></td>
         <% if seance.client.nil? %>
@@ -44,10 +42,11 @@
         <% if current_user.affilate.name == 'Admin' %>
           <td><%= link_to (aff = seance.doctor.affilate).name, affilate_path(aff) %></td>
         <% end %>
-        <td><%= link_to 'Отменить', 'seances/emptify/?id=' + seance.id.to_s, data: { confirm: 'Подтвердите отмену записи пациента' } %></td>
-        <td><%= link_to 'Подробнее', seance %></td>
-        <td><%= link_to 'Изменить', edit_seance_path(seance) %></td>
-        <td><%= link_to 'Удалить', seance, method: :delete, data: { confirm: 'Подтвердите действие' } %></td>
+        <td><%= link_to 'Подробнее', seance, :class => "btn-mini btn-more" %>
+          <%= link_to 'Отменить', 'seances/emptify/?id=' + seance.id.to_s, data: { confirm: 'Подтвердите отмену записи пациента' }, :class => "btn-mini btn-emptify" %>
+        </td>
+        <td><%= link_to 'Изменить', edit_seance_path(seance), :class => "btn-mini btn-edit" %>
+          <%= link_to 'Удалить', seance, method: :delete, data: { confirm: 'Подтвердите действие' }, :class => "btn-mini btn-delete" %></td>
       </tr>
     <% end %>
   </tbody>
