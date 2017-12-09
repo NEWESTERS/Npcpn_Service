@@ -5,7 +5,6 @@ class Client < ApplicationRecord
 	validates :patronymic, format: { with: /\A[а-яА-Я]+[ -]?[а-яА-Я]*\z/, message: "Should contain only letters" }
 	validates :birthdate, presence: true
 	validates :phone, format: { with: /\A[+][7,8][ ][(][0-9]{3}[)][ ][0-9]{3}[-][0-9]{2}[-][0-9]{2}+\z/, message: "Should be valid phone" }
-	before_save :convert_case
 
 	def full_name
 		last_name + ' ' + name + ' ' + patronymic
