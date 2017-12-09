@@ -50,14 +50,14 @@ class AppController < ApplicationController
     end
     if @client.valid?
       # находим сеанс, на который производится запись и задаём пациента
-      @seance = Seance.find(params[:seance])
+      @seance = Seance.find(params[:seance]) if !params[:seance].nil?
       if !@seance.nil? && @seance.client.nil?
         @seance.client = @client
         @seance.save
         # перенаправление на страницу с информацией о записи
         redirect_to action: 'show', seance_id: @seance.id
       else
-        redirect_to root_path(message: "Выбран некорректный сеанс")
+        redirect_to root_path(message: "Не выбран сеанс")
       end
     else
       redirect_to root_path(message: "Введены некорректные данные")
