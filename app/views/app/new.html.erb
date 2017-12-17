@@ -105,15 +105,19 @@
 
 	  <div class="form-group col-md-4">
 	    <label for="doctor">Врач</label>
-	    <select class="form-control" id="doctor" name="doctor">
-	    	<option>Нет свободных врачей</option>
-	    </select>
+	    <select class="form-control" id="doctor" name="doctor"></select>
 	  </div>
 
 	  <div class="form-group col-md-2">
 	    <label for="seance">Время</label>
 	    <select class="form-control" id="seance" name="seance" required></select>
 	  </div>
+  </div>
+
+  <div class="row">
+    <div id="info" style="text-align: center;">
+      <label class="text-warning"></label>
+    </div>    
   </div>
 
   <div class="row">
@@ -126,7 +130,7 @@
 <% end %>
 
 <script type="text/javascript">
-	$('#doctor').trigger('change');
+	//$('#doctor').trigger('change');
   $('#paid').hide();
 	// инициализация календарей для выбора дат
 	$(function(){

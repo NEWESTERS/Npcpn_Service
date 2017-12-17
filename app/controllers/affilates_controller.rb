@@ -69,6 +69,6 @@ class AffilatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def affilate_params
-      params.require(:affilate).permit(:address, :name)
+      params.require(:affilate).permit(:address, :name, :phone)
     end
 end

@@ -18,20 +18,20 @@ class AppController < ApplicationController
       @result = @result.collect(&:doctor).uniq
       # извлекаем ФИО врача
       @result = @result.collect { |p| [p.full_name + ((rank = p.rank).nil? ? '' : (' — ' + rank)), p.id] }
-      @result = [['Нет cвободных врачей']] if @result.blank?
+      @result = [['0']] if @result.blank?
     when 'seance'
       # находим все сеансы выбранного врача в выбранный день
       @result = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and doctor_id = ?", params[:date], params[:doctor_id])
       # извлекаем время свободных сеансов
       @result = @result.select { |p| p.client.nil? }.collect { |p| [p.date.strftime('%H:%M'), p.id] }
-      @result = [['—']] if @result.blank?
+      @result = [['2']] if @result.blank?
     when 'is_schedule'
       # находим все сеансы выбранного врача в выбранный день
       @query = Seance.where("to_char(date, 'DD-MM-YYYY') = ? and doctor_id = ?", params[:date], params[:doctor_id])
       # определяем наличие сеансов
       @result = @query.blank? ? [['-']] : [['+']]
     end
-    @result = [['Нет доступных вариантов']] if @result.blank?
+    @result = [['1']] if @result.blank?
     render json: @result # рендерим JSON, который получит клиент
   end
 
