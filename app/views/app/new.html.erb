@@ -36,6 +36,9 @@
 </div>
 
 <%= form_tag('app/add', :method => 'get') do %>
+  <% if !params[:message].nil? %>
+    <label class="text-warning"><%= params[:message] %></label>
+  <% end %>
   <h3>Персональная информация</h3>
   <div class="row">
 	  <div class="form-group col-md-4">
@@ -60,9 +63,6 @@
 	    <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Выберите дату (дд-мм-гггг)" required>
 	  </div>
 
-    <script type="text/javascript">
-      
-    </script>
 	  <div class="form-group col-md-8">
 	  	<label>Наличие постоянной регистрации (прописки) в г. Москва</label><br>
       <label><input type="radio" name="is_moscow" value="on" id="paid_off" required> Есть</label>
@@ -105,28 +105,32 @@
 
 	  <div class="form-group col-md-4">
 	    <label for="doctor">Врач</label>
-	    <select class="form-control" id="doctor" name="doctor">
-	    	<option>Нет свободных врачей</option>
-	    </select>
+	    <select class="form-control" id="doctor" name="doctor"></select>
 	  </div>
 
 	  <div class="form-group col-md-2">
 	    <label for="seance">Время</label>
-	    <select class="form-control" id="seance" name="seance"></select>
+	    <select class="form-control" id="seance" name="seance" required></select>
 	  </div>
+  </div>
+
+  <div class="row">
+    <div id="info" style="text-align: center;">
+      <label class="text-warning"></label>
+    </div>    
   </div>
 
   <div class="row">
   	<div class="form-group col-md-4"></div>
   	<div class="form-group col-md-4">
-  		<button type="submit" class="btn btn-primary btn-lg btn-block">Записаться</button>
+  		<button type="submit" class="btn btn-primary btn-lg btn-block" id="submit_btn">Записаться</button>
   	</div>
   </div>
   
 <% end %>
 
 <script type="text/javascript">
-	$('#doctor').trigger('change');
+	//$('#doctor').trigger('change');
   $('#paid').hide();
 	// инициализация календарей для выбора дат
 	$(function(){
@@ -149,12 +153,14 @@
     	});
 
       $("#birthdate").inputmask("99-99-9999");
-      $("#datepicker").inputmask("99-99-9999")
+      $("#datepicker").inputmask("99-99-9999");
+      $("#input_phone").inputmask("+7 (999) 999-99-99", { "clearIncomplete": true } )
   	});
+
   $(document).on('change', '#paid_off', function(){
     $('#paid').hide(300);
   });
-    $(document).on('change', '#paid_on', function(){
+  $(document).on('change', '#paid_on', function(){
     $('#paid').show(300);
   });
 </script>

@@ -1,4 +1,24 @@
 // функция, отправляющая асинхронный запрос к БД
+function handle_error(data) {
+	switch(data) {
+		case '0':
+			$('#info>label').text('В выбранный день нет cвободных врачей');
+			$('#seance').empty();
+			$('#info>label').show(300);
+			return true
+		case '1':
+			$('#info>label').text('Нет доступных вариантов');
+			$('#info>label').show(300);
+			return true
+		case '2':
+			$('#info>label').text('У выбранного врача в выбранный день нет свободных сеансов');
+			$('#info>label').show(300);
+			return true
+		default:
+			$('#info>label').hide(300);
+			return false
+	};
+};
 function app_update(source, target) {
 	$.ajax({
 		// адрес запроса
@@ -10,10 +30,12 @@ function app_update(source, target) {
 			// [["Ivanov Ivan Ivanovich",1],["Alekseev Aleksey Alexeevich",3]]
 			$('#' + target).empty();
 			// каждый элемент массива добавляется как option в select
-			data.map(function(item) {
-				$('#' + target).append('<option value="'+ item[1] + '">' + item[0] + '</option>');
-			})
-			$('#' + target).trigger('change');
+			if( !handle_error(data[0][0]) ) {
+				data.map(function(item) {
+					$('#' + target).append('<option value="'+ item[1] + '">' + item[0] + '</option>');
+				})
+				$('#' + target).trigger('change');
+			}
 		}
 	});
 }

@@ -2,7 +2,7 @@
 
 <h1>Врачи</h1>
 
-<table class="table table-hover">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -28,9 +28,9 @@
             <% else %>—<% end %>
           </td>
         <% end %>
-        <td><%= link_to 'Подробнее', doctor %></td>
-        <td><%= link_to 'Изменить', edit_doctor_path(doctor) %></td>
-        <td><%= link_to 'Удалить', doctor, method: :delete, data: { confirm: 'Подтвердите удаление' } %></td>
+        <td><%= link_to 'Подробнее', doctor, :class => "btn-mini btn-more" %></td>
+        <td><%= link_to 'Изменить', edit_doctor_path(doctor), :class => "btn-mini btn-edit" %></td>
+        <td><%= link_to 'Удалить', doctor, method: :delete, data: { confirm: 'Подтвердите удаление' }, :class => "btn-mini btn-delete" %></td>
       </tr>
     <% end %>
   </tbody>

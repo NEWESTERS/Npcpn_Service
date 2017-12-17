@@ -8,6 +8,7 @@
       <th>ID</th>
       <th>Название</th>
       <th>Адрес</th>
+      <th>Номер телефона</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -18,8 +19,9 @@
         <td><%= affilate.id %></td>
         <td><%= a_name = affilate.name %></td>
         <td><%= affilate.address %></td>
-        <td><%= link_to 'Подробнее', affilate %></td>
-        <td><%= link_to 'Изменить', edit_affilate_path(affilate) %></td>
+        <td><%= affilate.phone %></td>
+        <td><%= link_to 'Подробнее', affilate, :class => "btn-mini btn-more" %></td>
+        <td><%= link_to 'Изменить', edit_affilate_path(affilate), :class => "btn-mini btn-edit" %></td>
       </tr>
     <% end %>
   </tbody>
