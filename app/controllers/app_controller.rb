@@ -41,7 +41,7 @@ class AppController < ApplicationController
     if @client.nil?
       # создаём новую запись пациента в БД и заполнияем поля
       @client = Client.new(:last_name => params[:last_name], 
-                          :name => params[:last_name],
+                          :name => params[:name],
                           :patronymic => params[:patronymic],
                           :birthdate => params[:birthdate],
                           :email => params[:email],
