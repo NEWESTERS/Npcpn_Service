@@ -36,31 +36,35 @@ class AppController < ApplicationController
   end
 
   def add # метод, заполняющий поля БД
-    # проверяем, зарегистрирован ли пациент в базе
-    @client = Client.where('name = ? and last_name = ? and phone = ?', params[:name], params[:last_name], params[:phone])[0]
-    if @client.nil?
-      # создаём новую запись пациента в БД и заполнияем поля
-      @client = Client.new(:last_name => params[:last_name], 
-                          :name => params[:name],
-                          :patronymic => params[:patronymic],
-                          :birthdate => params[:birthdate],
-                          :email => params[:email],
-                          :phone => params[:phone],
-                          :is_moscow => params[:is_moscow])
-    end
-    if @client.valid?
-      # находим сеанс, на который производится запись и задаём пациента
-      @seance = Seance.find(params[:seance]) if !params[:seance].nil?
-      if !@seance.nil? && @seance.client.nil?
-        @seance.client = @client
-        @seance.save
-        # перенаправление на страницу с информацией о записи
-        redirect_to action: 'show', seance_id: @seance.id
+    if (params[:is_moscow] != 'off' and params[:affilate] != '3')
+      # проверяем, зарегистрирован ли пациент в базе
+      @client = Client.where('name = ? and last_name = ? and phone = ?', params[:name], params[:last_name], params[:phone])[0]
+      if @client.nil?
+        # создаём новую запись пациента в БД и заполнияем поля
+        @client = Client.new(:last_name => params[:last_name], 
+                            :name => params[:name],
+                            :patronymic => params[:patronymic],
+                            :birthdate => params[:birthdate],
+                            :email => params[:email],
+                            :phone => params[:phone],
+                            :is_moscow => params[:is_moscow])
+      end
+      if @client.valid?
+        # находим сеанс, на который производится запись и задаём пациента
+        @seance = Seance.find(params[:seance]) if !params[:seance].nil?
+        if !@seance.nil? && @seance.client.nil?
+          @seance.client = @client
+          @seance.save
+          # перенаправление на страницу с информацией о записи
+          redirect_to action: 'show', seance_id: @seance.id
+        else
+          redirect_to root_path(message: "Не выбран сеанс")
+        end
       else
-        redirect_to root_path(message: "Не выбран сеанс")
+        redirect_to root_path(message: "Введены некорректные данные")
       end
     else
-      redirect_to root_path(message: "Введены некорректные данные")
+      redirect_to root_path(message: "Запись в филиал \"" + Affilate.find_by_id(params[:affilate]).name + "\" платных пациентов осуществляется только по телефону 8-985-265-51-01")
     end
   end
 end

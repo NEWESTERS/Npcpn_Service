@@ -100,7 +100,7 @@
 
 	  <div class="form-group col-md-3">
 	    <label for="datepicker">Дата</label>
-	    <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Выберите дату (дд-мм-гггг)" required>
+	    <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Выберите дату" required>
 	  </div>
 
 	  <div class="form-group col-md-4">
@@ -156,11 +156,4 @@
       $("#datepicker").inputmask("99-99-9999");
       $("#input_phone").inputmask("+7 (999) 999-99-99", { "clearIncomplete": true } )
   	});
-
-  $(document).on('change', '#paid_off', function(){
-    $('#paid').hide(300);
-  });
-  $(document).on('change', '#paid_on', function(){
-    $('#paid').show(300);
-  });
 </script>

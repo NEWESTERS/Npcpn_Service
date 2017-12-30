@@ -1,22 +1,24 @@
 // функция, отправляющая асинхронный запрос к БД
 function handle_error(data) {
-	switch(data) {
-		case '0':
-			$('#info>label').text('В выбранный день нет cвободных врачей');
-			$('#seance').empty();
-			$('#info>label').show(300);
-			return true
-		case '1':
-			$('#info>label').text('Нет доступных вариантов');
-			$('#info>label').show(300);
-			return true
-		case '2':
-			$('#info>label').text('У выбранного врача в выбранный день нет свободных сеансов');
-			$('#info>label').show(300);
-			return true
-		default:
-			$('#info>label').hide(300);
-			return false
+	if ( !$('#paid_on').is(':checked') || !$('#affilate').val() == "3" ) {
+		switch(data) {
+			case '0':
+				$('#info>label').text('В выбранный день нет cвободных врачей');
+				$('#seance').empty();
+				$('#info>label').show(300);
+				return true
+			case '1':
+				$('#info>label').text('Нет доступных вариантов');
+				$('#info>label').show(300);
+				return true
+			case '2':
+				$('#info>label').text('У выбранного врача в выбранный день нет свободных сеансов');
+				$('#info>label').show(300);
+				return true
+			default:
+				$('#info>label').hide(300);
+				return false
+		}
 	};
 };
 function app_update(source, target) {
@@ -50,6 +52,9 @@ $(document).on('change', '#datepicker', function() {
 	};
 	app_update(data, data.to_find);
 	$('#datepicker').attr('placeholder', '');
+	if ($('#datepicker').val() == "") {
+		$('#datepicker').attr('placeholder', 'Выберите дату');
+	}
 });
 
 $(document).on('change', '#affilate', function() {
@@ -59,8 +64,14 @@ $(document).on('change', '#affilate', function() {
 		date: src[1], 	// по какому значению нужно искать
 		affilate: src[0]
 	};
-	app_update(data, data.to_find);
-	$('#datepicker').attr('placeholder', '');
+	$('#datepicker').trigger('change');
+	if ( $('#paid_on').is(':checked') && $('#affilate').val() == "3" ) {
+		$('#info>label').text('Запись в выбранный филиал платных пациентов осуществляется только по телефону');
+		$('#info>label').show(300);
+	} else {
+		$('#info>label').hide(300);
+		app_update(data, data.to_find);
+	}
 });
 
 // при выборе врача в список сеансов добавляются элементы
@@ -78,5 +89,18 @@ $(document).on('change', '#doctor', function() {
 // при выборе даты рождения заглушка в строке исчезает
 $(document).on('change', '#birthdate', function() {
 	$('#birthdate').attr('placeholder', '');
+});
+
+$(document).on('change', '#paid_off', function(){
+	$('#paid').hide(300);
+	$('#affilate').trigger('change')
+
+});
+$(document).on('change', '#paid_on', function(){
+	$('#paid').show(300);
+	if ( $('#affilate').val() == "3" ) {
+		$('#info>label').text('Запись в выбранный филиал платных пациентов осуществляется только по телефону');
+		$('#info>label').show(300);
+	}
 });
 
