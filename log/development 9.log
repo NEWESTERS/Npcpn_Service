@@ -1,0 +1,55 @@
+Started GET "/" for 127.0.0.1 at 2017-11-30 02:02:35 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (6.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AppController#new as HTML
+  Rendering app/new.html.erb within layouts/application
+  [1m[36mAffilate Load (1.3ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates" WHERE (name != 'Admin')[0m
+  Rendered app/new.html.erb within layouts/application (33.3ms)
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAffilate Load (0.2ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 961ms (Views: 919.8ms | ActiveRecord: 13.6ms)
+
+
+Started GET "/app/db?to_find=seance&date=&doctor_id=%D0%9D%D0%B5%D1%82+%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D1%8B%D1%85+%D0%B2%D1%80%D0%B0%D1%87%D0%B5%D0%B9" for 127.0.0.1 at 2017-11-30 02:02:37 +0300
+Started GET "/app/db?to_find=is_schedule&doctor_id=%D0%9D%D0%B5%D1%82+%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B4%D0%BD%D1%8B%D1%85+%D0%B2%D1%80%D0%B0%D1%87%D0%B5%D0%B9" for 127.0.0.1 at 2017-11-30 02:02:37 +0300
+Processing by AppController#db as */*
+  Parameters: {"to_find"=>"seance", "date"=>"", "doctor_id"=>"Нет свободных врачей"}
+Processing by AppController#db as */*
+  Parameters: {"to_find"=>"is_schedule", "doctor_id"=>"Нет свободных врачей"}
+  [1m[36mSeance Load (2.4ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '' and doctor_id = 'Нет свободных врачей')[0m
+  [1m[36mSeance Load (2.8ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = NULL and doctor_id = 'Нет свободных врачей')[0m
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 2.4ms)
+
+
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 2.8ms)
+
+
+  
+  
+ActiveRecord::StatementInvalid (PG::InvalidTextRepresentation: ERROR:  invalid input syntax for integer: "Нет свободных врачей"
+LINE 1: ...(to_char(date, 'DD-MM-YYYY') = '' and doctor_id = 'Нет свобо...
+                                                             ^
+: SELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '' and doctor_id = 'Нет свободных врачей')):
+ActiveRecord::StatementInvalid (PG::InvalidTextRepresentation: ERROR:  invalid input syntax for integer: "Нет свободных врачей"
+LINE 1: ...o_char(date, 'DD-MM-YYYY') = NULL and doctor_id = 'Нет свобо...
+                                                             ^
+: SELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = NULL and doctor_id = 'Нет свободных врачей')):
+  
+  
+app/controllers/app_controller.rb:26:in `db'
+app/controllers/app_controller.rb:32:in `db'
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.8ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.7ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.9ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (343.8ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.7ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (157.6ms)

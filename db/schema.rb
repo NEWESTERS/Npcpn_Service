@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217182151) do
+ActiveRecord::Schema.define(version: 20180108122807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20171217182151) do
     t.string   "rank"
     t.integer  "affilate_id"
     t.index ["affilate_id"], name: "index_doctors_on_affilate_id", using: :btree
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string   "name"
+    t.string   "last_name"
+    t.string   "patronymic"
+    t.string   "email"
+    t.string   "theme"
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "seances", force: :cascade do |t|

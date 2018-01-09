@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :feedbacks
   resources :affilates
   get 'menu/view'
 
   devise_for :users
+  get 'app/feedback'
   get 'app/new'
   get 'app/db'
   get 'app/show'

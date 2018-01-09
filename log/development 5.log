@@ -1,0 +1,238 @@
+Started GET "/" for 127.0.0.1 at 2017-10-04 11:32:38 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AppController#new as HTML
+  Rendering app/new.html.erb within layouts/application
+  [1m[36mAffilate Load (4.0ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates" WHERE (name != 'Admin')[0m
+  Rendered app/new.html.erb within layouts/application (33.8ms)
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAffilate Load (0.8ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 1016ms (Views: 928.3ms | ActiveRecord: 21.7ms)
+
+
+Started GET "/app/db?to_find=seance&date=&doctor_id=%D0%9D%D0%B5%D1%82+%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D1%8B%D1%85+%D0%B2%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D0%BE%D0%B2" for 127.0.0.1 at 2017-10-04 11:32:40 +0300
+Started GET "/app/db?to_find=is_schedule&doctor_id=%D0%9D%D0%B5%D1%82+%D0%B4%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BD%D1%8B%D1%85+%D0%B2%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D0%BE%D0%B2" for 127.0.0.1 at 2017-10-04 11:32:40 +0300
+Processing by AppController#db as */*
+Processing by AppController#db as */*
+  Parameters: {"to_find"=>"seance", "date"=>"", "doctor_id"=>"Нет доступных вариантов"}
+  Parameters: {"to_find"=>"is_schedule", "doctor_id"=>"Нет доступных вариантов"}
+  [1m[36mSeance Load (1.4ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = NULL and doctor_id = 'Нет доступных вариантов')[0m
+  [1m[36mSeance Load (3.1ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '' and doctor_id = 'Нет доступных вариантов')[0m
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.4ms)
+
+
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 3.1ms)
+
+
+  
+ActiveRecord::StatementInvalid (PG::InvalidTextRepresentation: ERROR:  invalid input syntax for integer: "Нет доступных вариантов"
+LINE 1: ...o_char(date, 'DD-MM-YYYY') = NULL and doctor_id = 'Нет досту...
+                                                             ^
+: SELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = NULL and doctor_id = 'Нет доступных вариантов')):
+  
+  
+ActiveRecord::StatementInvalid (PG::InvalidTextRepresentation: ERROR:  invalid input syntax for integer: "Нет доступных вариантов"
+LINE 1: ...(to_char(date, 'DD-MM-YYYY') = '' and doctor_id = 'Нет досту...
+                                                             ^
+: SELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '' and doctor_id = 'Нет доступных вариантов')):
+app/controllers/app_controller.rb:30:in `db'
+  
+app/controllers/app_controller.rb:25:in `db'
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (1.5ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.text.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.text.erb (0.6ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.2ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (0.7ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (206.0ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (270.4ms)
+Started GET "/doctors" for 127.0.0.1 at 2017-10-04 11:32:44 +0300
+Processing by DoctorsController#index as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAffilate Load (0.5ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering doctors/index.html.erb within layouts/application
+  [1m[36mDoctor Load (0.8ms)[0m  [1m[34mSELECT "doctors".* FROM "doctors"[0m
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered doctors/index.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 107ms (Views: 84.9ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/seances" for 127.0.0.1 at 2017-10-04 11:32:59 +0300
+Processing by SeancesController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAffilate Load (0.4ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSeance Load (4.7ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '04-10-2017')[0m
+  Rendering seances/index.html.erb within layouts/application
+  Rendered seances/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 94ms (Views: 76.2ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/app/db?to_find=is_schedule&date=09-10-2017" for 127.0.0.1 at 2017-10-04 11:33:01 +0300
+Processing by AppController#db as */*
+  Parameters: {"to_find"=>"is_schedule", "date"=>"09-10-2017"}
+  [1m[36mSeance Load (0.7ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '09-10-2017' and doctor_id = NULL)[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/seances?utf8=%E2%9C%93&date=09-10-2017" for 127.0.0.1 at 2017-10-04 11:33:02 +0300
+Processing by SeancesController#index as HTML
+  Parameters: {"utf8"=>"✓", "date"=>"09-10-2017"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAffilate Load (0.7ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSeance Load (2.9ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '09-10-2017')[0m
+  [1m[36mDoctor Load (0.5ms)[0m  [1m[34mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering seances/index.html.erb within layouts/application
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered seances/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 121ms (Views: 93.4ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/seances/215" for 127.0.0.1 at 2017-10-04 11:33:04 +0300
+Processing by SeancesController#show as HTML
+  Parameters: {"id"=>"215"}
+  [1m[36mSeance Load (0.6ms)[0m  [1m[34mSELECT  "seances".* FROM "seances" WHERE "seances"."id" = $1 LIMIT $2[0m  [["id", 215], ["LIMIT", 1]]
+  Rendering seances/show.html.erb within layouts/application
+  [1m[36mDoctor Load (0.2ms)[0m  [1m[34mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered seances/show.html.erb within layouts/application (4.0ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAffilate Load (0.4ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 107ms (Views: 97.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/seances/215/edit" for 127.0.0.1 at 2017-10-04 11:33:05 +0300
+Processing by SeancesController#edit as HTML
+  Parameters: {"id"=>"215"}
+  [1m[36mSeance Load (0.6ms)[0m  [1m[34mSELECT  "seances".* FROM "seances" WHERE "seances"."id" = $1 LIMIT $2[0m  [["id", 215], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering seances/edit.html.erb within layouts/application
+  [1m[36mDoctor Load (0.5ms)[0m  [1m[34mSELECT "doctors".* FROM "doctors" WHERE (affilate_id = 2)[0m
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[36mAffilate Load (0.4ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates"[0m
+  Rendered seances/_form.html.erb (50.0ms)
+  Rendered seances/edit.html.erb within layouts/application (53.1ms)
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 144ms (Views: 131.2ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/seances" for 127.0.0.1 at 2017-10-04 11:33:09 +0300
+Processing by SeancesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAffilate Load (0.4ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSeance Load (3.5ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '04-10-2017')[0m
+  Rendering seances/index.html.erb within layouts/application
+  Rendered seances/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 148ms (Views: 130.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/app/db?to_find=is_schedule&date=09-10-2017" for 127.0.0.1 at 2017-10-04 11:34:40 +0300
+Processing by AppController#db as */*
+  Parameters: {"to_find"=>"is_schedule", "date"=>"09-10-2017"}
+  [1m[36mSeance Load (0.6ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '09-10-2017' and doctor_id = NULL)[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/seances?utf8=%E2%9C%93&date=09-10-2017" for 127.0.0.1 at 2017-10-04 11:34:41 +0300
+Processing by SeancesController#index as HTML
+  Parameters: {"utf8"=>"✓", "date"=>"09-10-2017"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAffilate Load (0.5ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mSeance Load (0.9ms)[0m  [1m[34mSELECT "seances".* FROM "seances" WHERE (to_char(date, 'DD-MM-YYYY') = '09-10-2017')[0m
+  [1m[36mDoctor Load (1.0ms)[0m  [1m[34mSELECT  "doctors".* FROM "doctors" WHERE "doctors"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering seances/index.html.erb within layouts/application
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered seances/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 130ms (Views: 113.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/seances/215/edit" for 127.0.0.1 at 2017-10-04 11:34:43 +0300
+Processing by SeancesController#edit as HTML
+  Parameters: {"id"=>"215"}
+  [1m[36mSeance Load (0.7ms)[0m  [1m[34mSELECT  "seances".* FROM "seances" WHERE "seances"."id" = $1 LIMIT $2[0m  [["id", 215], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering seances/edit.html.erb within layouts/application
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT "doctors".* FROM "doctors"[0m
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates"[0m
+  Rendered seances/_form.html.erb (12.8ms)
+  Rendered seances/edit.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 115ms (Views: 101.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/seances/215/edit" for 127.0.0.1 at 2017-10-04 11:35:23 +0300
+Processing by SeancesController#edit as HTML
+  Parameters: {"id"=>"215"}
+  [1m[36mSeance Load (0.3ms)[0m  [1m[34mSELECT  "seances".* FROM "seances" WHERE "seances"."id" = $1 LIMIT $2[0m  [["id", 215], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering seances/edit.html.erb within layouts/application
+  [1m[36mAffilate Load (0.4ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDoctor Load (0.4ms)[0m  [1m[34mSELECT "doctors".* FROM "doctors"[0m
+  Rendered seances/_form.html.erb (13.5ms)
+  Rendered seances/edit.html.erb within layouts/application (17.3ms)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    19:   <div class="form-group">
+    20:     <%= f.label 'Врач' %>
+    21:     <% if current_user.affilate.name == 'Admin' %>
+    22:       <%= f.select :doctor_id, Doctor.all.collect { |p| [p.full_name + ' — ' + p.affilate.name, p.id] }, {}, :class => 'form-control' %>
+    23:     <% else %>
+    24:       <%= f.select :doctor_id, Doctor.where('affilate_id = ?', current_user.affilate_id).collect { |p| [p.full_name, p.id] }, {}, :class => 'form-control' %>
+    25:     <% end %>
+  
+app/views/seances/_form.html.erb:22:in `block (2 levels) in _app_views_seances__form_html_erb___514776603638740987_70366073660280'
+app/views/seances/_form.html.erb:22:in `block in _app_views_seances__form_html_erb___514776603638740987_70366073660280'
+app/views/seances/_form.html.erb:1:in `_app_views_seances__form_html_erb___514776603638740987_70366073660280'
+app/views/seances/edit.html.erb:3:in `_app_views_seances_edit_html_erb__4588830399692995209_70366115657180'
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.6ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (126.8ms)
+Started GET "/seances/215/edit" for 127.0.0.1 at 2017-10-04 13:15:19 +0300
+Processing by SeancesController#edit as HTML
+  Parameters: {"id"=>"215"}
+  [1m[36mSeance Load (0.6ms)[0m  [1m[34mSELECT  "seances".* FROM "seances" WHERE "seances"."id" = $1 LIMIT $2[0m  [["id", 215], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering seances/edit.html.erb within layouts/application
+  [1m[36mAffilate Load (0.4ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDoctor Load (0.9ms)[0m  [1m[34mSELECT "doctors".* FROM "doctors"[0m
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates"[0m
+  Rendered seances/_form.html.erb (67.3ms)
+  Rendered seances/edit.html.erb within layouts/application (70.5ms)
+Completed 200 OK in 413ms (Views: 218.9ms | ActiveRecord: 25.4ms)
+
+
+Started GET "/seances/215/edit" for 127.0.0.1 at 2017-10-04 13:15:43 +0300
+Processing by SeancesController#edit as HTML
+  Parameters: {"id"=>"215"}
+  [1m[36mSeance Load (0.4ms)[0m  [1m[34mSELECT  "seances".* FROM "seances" WHERE "seances"."id" = $1 LIMIT $2[0m  [["id", 215], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering seances/edit.html.erb within layouts/application
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mDoctor Load (0.3ms)[0m  [1m[34mSELECT "doctors".* FROM "doctors"[0m
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "affilates".* FROM "affilates" WHERE "affilates"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[36mAffilate Load (0.3ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates"[0m
+  Rendered seances/_form.html.erb (62.6ms)
+  Rendered seances/edit.html.erb within layouts/application (65.7ms)
+Completed 200 OK in 284ms (Views: 247.6ms | ActiveRecord: 2.4ms)
+
+

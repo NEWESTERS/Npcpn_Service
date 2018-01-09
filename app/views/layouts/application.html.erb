@@ -36,6 +36,7 @@
               <li><%= link_to 'Врачи', '/doctors' %></li>
               <% if current_user.affilate.name == 'Admin' %>
                 <li><%= link_to 'Филиалы', '/affilates' %></li>
+                <li><%= link_to 'Обращения', '/feedbacks' %></li>
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
