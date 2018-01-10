@@ -57,11 +57,12 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'no-reply@npcpn.com'}
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    user_name: 'newwwesters@gmail.com',
-    password: '25881234',
+    tls: => true,
+    address: 'smtp.yandex.ru',
+    port: 465,
+    domain: 'yandex.ru',
     authentication: 'plain',
-    enable_starttls_auto: true
+    user_name: 'rgakzhigitov@npcpn.ru',
+    password: 'ndgjao'
   }
 end
