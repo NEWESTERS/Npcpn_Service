@@ -8,7 +8,7 @@ class AutoAnswerMailer < ApplicationMailer
 
   	def repliable_email(feedback)
   		@feedback = feedback
-  		mail(:to => "newwwesters@gmail.com", :subject => "[npcpn] " + feedback.theme)
+  		mail(:to => "pisma@npcpn.ru", :subject => "[npcpn] " + feedback.theme)
   	end
 
   	def dept_email(feedback)
