@@ -22767,3 +22767,395 @@ app/controllers/app_controller.rb:80:in `feedback'
   Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
   Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.1ms)
   Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (264.9ms)
+Started GET "/" for 127.0.0.1 at 2018-01-10 16:54:36 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (4.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AppController#new as HTML
+  Rendering app/new.html.erb within layouts/application
+  [1m[36mAffilate Load (1.3ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates" WHERE (name != 'Admin')[0m
+  Rendered app/new.html.erb within layouts/application (209.4ms)
+Completed 200 OK in 1130ms (Views: 1008.6ms | ActiveRecord: 76.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-10 16:54:51 +0300
+Processing by AppController#new as HTML
+  Rendering app/new.html.erb within layouts/application
+  [1m[36mAffilate Load (1.0ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates" WHERE (name != 'Admin')[0m
+  Rendered app/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 544ms (Views: 534.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/app/feedback?utf8=%E2%9C%93&last_name=%D0%91%D0%B0%D0%BB%D0%B8%D1%85%D0%B8%D0%BD&name=%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B0&patronymic=%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D1%8C%D0%B5%D0%B2%D0%B8%D1%87&email=ramiro.cruz%40mail.ru&theme=%D0%B0%D0%B2%D1%8B%D1%84%D0%BF%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D1%84%D0%BF%D1%8B%D0%B2%D0%BF&text=%D0%B2%D1%8B%D0%BF%D1%84%D0%BF%D1%84%D0%B2%D1%8B%D0%BF%D1%84%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B" for 127.0.0.1 at 2018-01-10 16:55:05 +0300
+Processing by AppController#feedback as HTML
+  Parameters: {"utf8"=>"✓", "last_name"=>"Балихин", "name"=>"Никита", "patronymic"=>"Евгеньевич", "email"=>"ramiro.cruz@mail.ru", "theme"=>"авыфппвыпвыпвыфпывп", "text"=>"выпфпфвыпфыпвыпвы"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (12.5ms)[0m  [1m[32mINSERT INTO "feedbacks" ("name", "last_name", "patronymic", "email", "theme", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Никита"], ["last_name", "Балихин"], ["patronymic", "Евгеньевич"], ["email", "ramiro.cruz@mail.ru"], ["theme", "авыфппвыпвыпвыфпывп"], ["text", "выпфпфвыпфыпвыпвы"], ["created_at", "2018-01-10 13:55:06.043039"], ["updated_at", "2018-01-10 13:55:06.043039"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering auto_answer_mailer/check_email.html.erb within layouts/mailer
+  Rendered auto_answer_mailer/check_email.html.erb within layouts/mailer (0.9ms)
+AutoAnswerMailer#check_email: processed outbound mail in 207.9ms
+Sent mail to ramiro.cruz@mail.ru (698.6ms)
+Date: Wed, 10 Jan 2018 16:55:06 +0300
+From: newwwesters@gmail.com
+To: ramiro.cruz@mail.ru
+Message-ID: <5a561b3ae8e8a_23a93ff9b61f59248535@MacBook-Air-Nikita.local.mail>
+Subject: =?UTF-8?Q?=D0=9E=D0=B1=D1=80=D0=B0=D1=89=D0=B5=D0=BD=D0=B8=D0=B5?=
+ =?UTF-8?Q?_=D0=B2_=D0=93=D0=91=D0=A3=D0=97_=D0=9D=D0=9F=D0=A6_=D0=B8=D0=BC.?=
+ =?UTF-8?Q?_=D0=A1=D0=BE=D0=BB=D0=BE=D0=B2=D1=8C=D0=B5=D0=B2=D0=B0?=
+ =?UTF-8?Q?_=D0=94=D0=97=D0=9C?=
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0
+cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNo
+YXJzZXQ9dXRmLTgiIC8+CiAgICA8c3R5bGU+CiAgICAgIC8qIEVtYWlsIHN0
+eWxlcyBuZWVkIHRvIGJlIGlubGluZSAqLwogICAgPC9zdHlsZT4KICA8L2hl
+YWQ+CgogIDxib2R5PgogICAgPCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxo
+ZWFkPgogICAgPG1ldGEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVU
+Ri04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIC8+CiAgPC9oZWFkPgog
+IDxib2R5PgogICAgPHA+0KPQstCw0LbQsNC10LzRi9C5IDxiPtCd0LjQutC4
+0YLQsCDQldCy0LPQtdC90YzQtdCy0LjRhzwvYj4sPC9wPgogICAgPHA+0JLQ
+sNGI0LUg0L7QsdGA0LDRidC10L3QuNC1INC90LAg0YHQsNC50YIgd3d3Lm5w
+Y3BuLnJ1INC/0YDQuNC90Y/RgtC+LCDQtdC80YMg0L/RgNC40YHQstC+0LXQ
+vSDQuNC00LXQvdGC0LjRhNC40LrQsNGG0LjQvtC90L3Ri9C5INC90L7QvNC1
+0YAgMTcuCtCf0L4g0YDQtdC30YPQu9GM0YLQsNGC0LDQvCDRgNCw0YHRgdC8
+0L7RgtGA0LXQvdC40Y8g0JLRiyDQv9C+0LvRg9GH0LjRgtC1INC+0YLQstC1
+0YIg0L/QviDRgdGD0YnQtdGB0YLQstGDINCy0L7Qv9GA0L7RgdCwLiAK0JTQ
+sNC90L3QvtC1INC/0LjRgdGM0LzQviDRgdGE0L7RgNC80LjRgNC+0LLQsNC9
+0L4g0LDQstGC0L7QvNCw0YLQuNGH0LXRgdC60LgsINC/0YDQvtGB0YzQsdCw
+INC90LUg0L7RgtCy0LXRh9Cw0YLRjCDQvdCwINC90LXQs9C+LgrQntGE0LjR
+htC40LDQu9GM0L3Ri9C5INGB0YDQvtC6INGA0LDRgdGB0LzQvtGC0YDQtdC9
+0LjRjyDQvtCx0YDQsNGJ0LXQvdC40Y8gJm1kYXNoOyDQvtC00LjQvSDQvNC1
+0YHRj9GGLCDQvtC00L3QsNC60L4sINCyINCx0L7Qu9GM0YjQuNC90YHRgtCy
+0LUg0YHQu9GD0YfQsNC10LIg0L7RgtCy0LXRgiDQvdCw0L/RgNCw0LLQu9GP
+0LXRgtGB0Y8g0LAg0YLQtdGH0LXQvdC40LUg0L3QtdC00LXQu9C4LjwvcD4K
+CTxwPtCi0LXQvNCwINCy0LDRiNC10LPQviDQvtCx0YDQsNGJ0LXQvdC40Y86
+INCw0LLRi9GE0L/Qv9Cy0YvQv9Cy0YvQv9Cy0YvRhNC/0YvQstC/PC9wPgog
+ICAgPHA+PGI+0JDQtNC80LjQvdC40YHRgtGA0LDRhtC40Y8g0JPQkdCj0Jcg
+0J3Qn9CmINC40LwuINCh0L7Qu9C+0LLRjNC10LLQsCDQlNCX0Jw8L2I+PC9w
+PgogIDwvYm9keT4KPC9odG1sPgogIDwvYm9keT4KPC9odG1sPgo=
+
+Completed 500 Internal Server Error in 1665ms (ActiveRecord: 19.3ms)
+
+
+  
+Net::SMTPFatalError (553 5.7.1 Sender address rejected: not owned by auth user.
+):
+  
+app/controllers/app_controller.rb:80:in `feedback'
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.4ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (228.3ms)
+Started GET "/app/feedback?utf8=%E2%9C%93&last_name=%D0%91%D0%B0%D0%BB%D0%B8%D1%85%D0%B8%D0%BD&name=%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B0&patronymic=%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D1%8C%D0%B5%D0%B2%D0%B8%D1%87&email=ramiro.cruz%40mail.ru&theme=%D0%B0%D0%B2%D1%8B%D1%84%D0%BF%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D1%84%D0%BF%D1%8B%D0%B2%D0%BF&text=%D0%B2%D1%8B%D0%BF%D1%84%D0%BF%D1%84%D0%B2%D1%8B%D0%BF%D1%84%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B" for 127.0.0.1 at 2018-01-10 17:01:13 +0300
+Processing by AppController#feedback as HTML
+  Parameters: {"utf8"=>"✓", "last_name"=>"Балихин", "name"=>"Никита", "patronymic"=>"Евгеньевич", "email"=>"ramiro.cruz@mail.ru", "theme"=>"авыфппвыпвыпвыфпывп", "text"=>"выпфпфвыпфыпвыпвы"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (11.9ms)[0m  [1m[32mINSERT INTO "feedbacks" ("name", "last_name", "patronymic", "email", "theme", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Никита"], ["last_name", "Балихин"], ["patronymic", "Евгеньевич"], ["email", "ramiro.cruz@mail.ru"], ["theme", "авыфппвыпвыпвыфпывп"], ["text", "выпфпфвыпфыпвыпвы"], ["created_at", "2018-01-10 14:01:13.161960"], ["updated_at", "2018-01-10 14:01:13.161960"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  Rendering auto_answer_mailer/check_email.html.erb within layouts/mailer
+  Rendered auto_answer_mailer/check_email.html.erb within layouts/mailer (4.2ms)
+AutoAnswerMailer#check_email: processed outbound mail in 62.5ms
+Sent mail to ramiro.cruz@mail.ru (687.4ms)
+Date: Wed, 10 Jan 2018 17:01:13 +0300
+From: newwwesters@gmail.com
+To: ramiro.cruz@mail.ru
+Message-ID: <5a561ca9435ca_23a93ff9b61f58488548b@MacBook-Air-Nikita.local.mail>
+Subject: =?UTF-8?Q?=D0=9E=D0=B1=D1=80=D0=B0=D1=89=D0=B5=D0=BD=D0=B8=D0=B5?=
+ =?UTF-8?Q?_=D0=B2_=D0=93=D0=91=D0=A3=D0=97_=D0=9D=D0=9F=D0=A6_=D0=B8=D0=BC.?=
+ =?UTF-8?Q?_=D0=A1=D0=BE=D0=BB=D0=BE=D0=B2=D1=8C=D0=B5=D0=B2=D0=B0?=
+ =?UTF-8?Q?_=D0=94=D0=97=D0=9C?=
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0
+cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNo
+YXJzZXQ9dXRmLTgiIC8+CiAgICA8c3R5bGU+CiAgICAgIC8qIEVtYWlsIHN0
+eWxlcyBuZWVkIHRvIGJlIGlubGluZSAqLwogICAgPC9zdHlsZT4KICA8L2hl
+YWQ+CgogIDxib2R5PgogICAgPCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxo
+ZWFkPgogICAgPG1ldGEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVU
+Ri04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIC8+CiAgPC9oZWFkPgog
+IDxib2R5PgogICAgPHA+0KPQstCw0LbQsNC10LzRi9C5IDxiPtCd0LjQutC4
+0YLQsCDQldCy0LPQtdC90YzQtdCy0LjRhzwvYj4sPC9wPgogICAgPHA+0JLQ
+sNGI0LUg0L7QsdGA0LDRidC10L3QuNC1INC90LAg0YHQsNC50YIgd3d3Lm5w
+Y3BuLnJ1INC/0YDQuNC90Y/RgtC+LCDQtdC80YMg0L/RgNC40YHQstC+0LXQ
+vSDQuNC00LXQvdGC0LjRhNC40LrQsNGG0LjQvtC90L3Ri9C5INC90L7QvNC1
+0YAgMTguCtCf0L4g0YDQtdC30YPQu9GM0YLQsNGC0LDQvCDRgNCw0YHRgdC8
+0L7RgtGA0LXQvdC40Y8g0JLRiyDQv9C+0LvRg9GH0LjRgtC1INC+0YLQstC1
+0YIg0L/QviDRgdGD0YnQtdGB0YLQstGDINCy0L7Qv9GA0L7RgdCwLiAK0JTQ
+sNC90L3QvtC1INC/0LjRgdGM0LzQviDRgdGE0L7RgNC80LjRgNC+0LLQsNC9
+0L4g0LDQstGC0L7QvNCw0YLQuNGH0LXRgdC60LgsINC/0YDQvtGB0YzQsdCw
+INC90LUg0L7RgtCy0LXRh9Cw0YLRjCDQvdCwINC90LXQs9C+LgrQntGE0LjR
+htC40LDQu9GM0L3Ri9C5INGB0YDQvtC6INGA0LDRgdGB0LzQvtGC0YDQtdC9
+0LjRjyDQvtCx0YDQsNGJ0LXQvdC40Y8gJm1kYXNoOyDQvtC00LjQvSDQvNC1
+0YHRj9GGLCDQvtC00L3QsNC60L4sINCyINCx0L7Qu9GM0YjQuNC90YHRgtCy
+0LUg0YHQu9GD0YfQsNC10LIg0L7RgtCy0LXRgiDQvdCw0L/RgNCw0LLQu9GP
+0LXRgtGB0Y8g0LAg0YLQtdGH0LXQvdC40LUg0L3QtdC00LXQu9C4LjwvcD4K
+CTxwPtCi0LXQvNCwINCy0LDRiNC10LPQviDQvtCx0YDQsNGJ0LXQvdC40Y86
+INCw0LLRi9GE0L/Qv9Cy0YvQv9Cy0YvQv9Cy0YvRhNC/0YvQstC/PC9wPgog
+ICAgPHA+PGI+0JDQtNC80LjQvdC40YHRgtGA0LDRhtC40Y8g0JPQkdCj0Jcg
+0J3Qn9CmINC40LwuINCh0L7Qu9C+0LLRjNC10LLQsCDQlNCX0Jw8L2I+PC9w
+PgogIDwvYm9keT4KPC9odG1sPgogIDwvYm9keT4KPC9odG1sPgo=
+
+Completed 500 Internal Server Error in 815ms (ActiveRecord: 13.9ms)
+
+
+  
+Net::SMTPFatalError (553 5.7.1 Sender address rejected: not owned by auth user.
+):
+  
+app/controllers/app_controller.rb:80:in `feedback'
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.2ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (10.3ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (240.4ms)
+Started GET "/app/feedback?utf8=%E2%9C%93&last_name=%D0%91%D0%B0%D0%BB%D0%B8%D1%85%D0%B8%D0%BD&name=%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B0&patronymic=%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D1%8C%D0%B5%D0%B2%D0%B8%D1%87&email=ramiro.cruz%40mail.ru&theme=%D0%B0%D0%B2%D1%8B%D1%84%D0%BF%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D1%84%D0%BF%D1%8B%D0%B2%D0%BF&text=%D0%B2%D1%8B%D0%BF%D1%84%D0%BF%D1%84%D0%B2%D1%8B%D0%BF%D1%84%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B" for 127.0.0.1 at 2018-01-10 17:07:54 +0300
+Processing by AppController#feedback as HTML
+  Parameters: {"utf8"=>"✓", "last_name"=>"Балихин", "name"=>"Никита", "patronymic"=>"Евгеньевич", "email"=>"ramiro.cruz@mail.ru", "theme"=>"авыфппвыпвыпвыфпывп", "text"=>"выпфпфвыпфыпвыпвы"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "feedbacks" ("name", "last_name", "patronymic", "email", "theme", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Никита"], ["last_name", "Балихин"], ["patronymic", "Евгеньевич"], ["email", "ramiro.cruz@mail.ru"], ["theme", "авыфппвыпвыпвыфпывп"], ["text", "выпфпфвыпфыпвыпвы"], ["created_at", "2018-01-10 14:07:54.194257"], ["updated_at", "2018-01-10 14:07:54.194257"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  Rendering auto_answer_mailer/check_email.html.erb within layouts/mailer
+  Rendered auto_answer_mailer/check_email.html.erb within layouts/mailer (4.2ms)
+AutoAnswerMailer#check_email: processed outbound mail in 84.0ms
+Sent mail to ramiro.cruz@mail.ru (848.0ms)
+Date: Wed, 10 Jan 2018 17:07:54 +0300
+From: newwwesters@gmail.com
+To: ramiro.cruz@mail.ru
+Message-ID: <5a561e3a4f0ca_23a93ff9b61f5e1085550@MacBook-Air-Nikita.local.mail>
+Subject: =?UTF-8?Q?=D0=9E=D0=B1=D1=80=D0=B0=D1=89=D0=B5=D0=BD=D0=B8=D0=B5?=
+ =?UTF-8?Q?_=D0=B2_=D0=93=D0=91=D0=A3=D0=97_=D0=9D=D0=9F=D0=A6_=D0=B8=D0=BC.?=
+ =?UTF-8?Q?_=D0=A1=D0=BE=D0=BB=D0=BE=D0=B2=D1=8C=D0=B5=D0=B2=D0=B0?=
+ =?UTF-8?Q?_=D0=94=D0=97=D0=9C?=
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0
+cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNo
+YXJzZXQ9dXRmLTgiIC8+CiAgICA8c3R5bGU+CiAgICAgIC8qIEVtYWlsIHN0
+eWxlcyBuZWVkIHRvIGJlIGlubGluZSAqLwogICAgPC9zdHlsZT4KICA8L2hl
+YWQ+CgogIDxib2R5PgogICAgPCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxo
+ZWFkPgogICAgPG1ldGEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVU
+Ri04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIC8+CiAgPC9oZWFkPgog
+IDxib2R5PgogICAgPHA+0KPQstCw0LbQsNC10LzRi9C5IDxiPtCd0LjQutC4
+0YLQsCDQldCy0LPQtdC90YzQtdCy0LjRhzwvYj4sPC9wPgogICAgPHA+0JLQ
+sNGI0LUg0L7QsdGA0LDRidC10L3QuNC1INC90LAg0YHQsNC50YIgd3d3Lm5w
+Y3BuLnJ1INC/0YDQuNC90Y/RgtC+LCDQtdC80YMg0L/RgNC40YHQstC+0LXQ
+vSDQuNC00LXQvdGC0LjRhNC40LrQsNGG0LjQvtC90L3Ri9C5INC90L7QvNC1
+0YAgMTkuCtCf0L4g0YDQtdC30YPQu9GM0YLQsNGC0LDQvCDRgNCw0YHRgdC8
+0L7RgtGA0LXQvdC40Y8g0JLRiyDQv9C+0LvRg9GH0LjRgtC1INC+0YLQstC1
+0YIg0L/QviDRgdGD0YnQtdGB0YLQstGDINCy0L7Qv9GA0L7RgdCwLiAK0JTQ
+sNC90L3QvtC1INC/0LjRgdGM0LzQviDRgdGE0L7RgNC80LjRgNC+0LLQsNC9
+0L4g0LDQstGC0L7QvNCw0YLQuNGH0LXRgdC60LgsINC/0YDQvtGB0YzQsdCw
+INC90LUg0L7RgtCy0LXRh9Cw0YLRjCDQvdCwINC90LXQs9C+LgrQntGE0LjR
+htC40LDQu9GM0L3Ri9C5INGB0YDQvtC6INGA0LDRgdGB0LzQvtGC0YDQtdC9
+0LjRjyDQvtCx0YDQsNGJ0LXQvdC40Y8gJm1kYXNoOyDQvtC00LjQvSDQvNC1
+0YHRj9GGLCDQvtC00L3QsNC60L4sINCyINCx0L7Qu9GM0YjQuNC90YHRgtCy
+0LUg0YHQu9GD0YfQsNC10LIg0L7RgtCy0LXRgiDQvdCw0L/RgNCw0LLQu9GP
+0LXRgtGB0Y8g0LAg0YLQtdGH0LXQvdC40LUg0L3QtdC00LXQu9C4LjwvcD4K
+CTxwPtCi0LXQvNCwINCy0LDRiNC10LPQviDQvtCx0YDQsNGJ0LXQvdC40Y86
+INCw0LLRi9GE0L/Qv9Cy0YvQv9Cy0YvQv9Cy0YvRhNC/0YvQstC/PC9wPgog
+ICAgPHA+PGI+0JDQtNC80LjQvdC40YHRgtGA0LDRhtC40Y8g0JPQkdCj0Jcg
+0J3Qn9CmINC40LwuINCh0L7Qu9C+0LLRjNC10LLQsCDQlNCX0Jw8L2I+PC9w
+PgogIDwvYm9keT4KPC9odG1sPgogIDwvYm9keT4KPC9odG1sPgo=
+
+Completed 500 Internal Server Error in 974ms (ActiveRecord: 2.6ms)
+
+
+  
+Net::SMTPFatalError (553 5.7.1 Sender address rejected: not owned by auth user.
+):
+  
+app/controllers/app_controller.rb:80:in `feedback'
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (22.6ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.3ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (577.3ms)
+Started GET "/app/feedback?utf8=%E2%9C%93&last_name=%D0%91%D0%B0%D0%BB%D0%B8%D1%85%D0%B8%D0%BD&name=%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B0&patronymic=%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D1%8C%D0%B5%D0%B2%D0%B8%D1%87&email=ramiro.cruz%40mail.ru&theme=%D0%B0%D0%B2%D1%8B%D1%84%D0%BF%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D1%84%D0%BF%D1%8B%D0%B2%D0%BF&text=%D0%B2%D1%8B%D0%BF%D1%84%D0%BF%D1%84%D0%B2%D1%8B%D0%BF%D1%84%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B" for 127.0.0.1 at 2018-01-10 17:12:09 +0300
+Processing by AppController#feedback as HTML
+  Parameters: {"utf8"=>"✓", "last_name"=>"Балихин", "name"=>"Никита", "patronymic"=>"Евгеньевич", "email"=>"ramiro.cruz@mail.ru", "theme"=>"авыфппвыпвыпвыфпывп", "text"=>"выпфпфвыпфыпвыпвы"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "feedbacks" ("name", "last_name", "patronymic", "email", "theme", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Никита"], ["last_name", "Балихин"], ["patronymic", "Евгеньевич"], ["email", "ramiro.cruz@mail.ru"], ["theme", "авыфппвыпвыпвыфпывп"], ["text", "выпфпфвыпфыпвыпвы"], ["created_at", "2018-01-10 14:12:09.155342"], ["updated_at", "2018-01-10 14:12:09.155342"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering auto_answer_mailer/check_email.html.erb within layouts/mailer
+  Rendered auto_answer_mailer/check_email.html.erb within layouts/mailer (0.9ms)
+AutoAnswerMailer#check_email: processed outbound mail in 51.8ms
+Sent mail to ramiro.cruz@mail.ru (455.9ms)
+Date: Wed, 10 Jan 2018 17:12:09 +0300
+From: newwwesters@gmail.com
+To: ramiro.cruz@mail.ru
+Message-ID: <5a561f393403f_23a93ff9b61f592485633@MacBook-Air-Nikita.local.mail>
+Subject: =?UTF-8?Q?=D0=9E=D0=B1=D1=80=D0=B0=D1=89=D0=B5=D0=BD=D0=B8=D0=B5?=
+ =?UTF-8?Q?_=D0=B2_=D0=93=D0=91=D0=A3=D0=97_=D0=9D=D0=9F=D0=A6_=D0=B8=D0=BC.?=
+ =?UTF-8?Q?_=D0=A1=D0=BE=D0=BB=D0=BE=D0=B2=D1=8C=D0=B5=D0=B2=D0=B0?=
+ =?UTF-8?Q?_=D0=94=D0=97=D0=9C?=
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0
+cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNo
+YXJzZXQ9dXRmLTgiIC8+CiAgICA8c3R5bGU+CiAgICAgIC8qIEVtYWlsIHN0
+eWxlcyBuZWVkIHRvIGJlIGlubGluZSAqLwogICAgPC9zdHlsZT4KICA8L2hl
+YWQ+CgogIDxib2R5PgogICAgPCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxo
+ZWFkPgogICAgPG1ldGEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVU
+Ri04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIC8+CiAgPC9oZWFkPgog
+IDxib2R5PgogICAgPHA+0KPQstCw0LbQsNC10LzRi9C5IDxiPtCd0LjQutC4
+0YLQsCDQldCy0LPQtdC90YzQtdCy0LjRhzwvYj4sPC9wPgogICAgPHA+0JLQ
+sNGI0LUg0L7QsdGA0LDRidC10L3QuNC1INC90LAg0YHQsNC50YIgd3d3Lm5w
+Y3BuLnJ1INC/0YDQuNC90Y/RgtC+LCDQtdC80YMg0L/RgNC40YHQstC+0LXQ
+vSDQuNC00LXQvdGC0LjRhNC40LrQsNGG0LjQvtC90L3Ri9C5INC90L7QvNC1
+0YAgMjAuCtCf0L4g0YDQtdC30YPQu9GM0YLQsNGC0LDQvCDRgNCw0YHRgdC8
+0L7RgtGA0LXQvdC40Y8g0JLRiyDQv9C+0LvRg9GH0LjRgtC1INC+0YLQstC1
+0YIg0L/QviDRgdGD0YnQtdGB0YLQstGDINCy0L7Qv9GA0L7RgdCwLiAK0JTQ
+sNC90L3QvtC1INC/0LjRgdGM0LzQviDRgdGE0L7RgNC80LjRgNC+0LLQsNC9
+0L4g0LDQstGC0L7QvNCw0YLQuNGH0LXRgdC60LgsINC/0YDQvtGB0YzQsdCw
+INC90LUg0L7RgtCy0LXRh9Cw0YLRjCDQvdCwINC90LXQs9C+LgrQntGE0LjR
+htC40LDQu9GM0L3Ri9C5INGB0YDQvtC6INGA0LDRgdGB0LzQvtGC0YDQtdC9
+0LjRjyDQvtCx0YDQsNGJ0LXQvdC40Y8gJm1kYXNoOyDQvtC00LjQvSDQvNC1
+0YHRj9GGLCDQvtC00L3QsNC60L4sINCyINCx0L7Qu9GM0YjQuNC90YHRgtCy
+0LUg0YHQu9GD0YfQsNC10LIg0L7RgtCy0LXRgiDQvdCw0L/RgNCw0LLQu9GP
+0LXRgtGB0Y8g0LAg0YLQtdGH0LXQvdC40LUg0L3QtdC00LXQu9C4LjwvcD4K
+CTxwPtCi0LXQvNCwINCy0LDRiNC10LPQviDQvtCx0YDQsNGJ0LXQvdC40Y86
+INCw0LLRi9GE0L/Qv9Cy0YvQv9Cy0YvQv9Cy0YvRhNC/0YvQstC/PC9wPgog
+ICAgPHA+PGI+0JDQtNC80LjQvdC40YHRgtGA0LDRhtC40Y8g0JPQkdCj0Jcg
+0J3Qn9CmINC40LwuINCh0L7Qu9C+0LLRjNC10LLQsCDQlNCX0Jw8L2I+PC9w
+PgogIDwvYm9keT4KPC9odG1sPgogIDwvYm9keT4KPC9odG1sPgo=
+
+Completed 500 Internal Server Error in 515ms (ActiveRecord: 1.3ms)
+
+
+  
+Net::SMTPFatalError (553 5.7.1 Sender address rejected: not owned by auth user.
+):
+  
+app/controllers/app_controller.rb:80:in `feedback'
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.5ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendering /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/LNDSLD/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-5.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (221.8ms)
+Started GET "/app/feedback?utf8=%E2%9C%93&last_name=%D0%91%D0%B0%D0%BB%D0%B8%D1%85%D0%B8%D0%BD&name=%D0%9D%D0%B8%D0%BA%D0%B8%D1%82%D0%B0&patronymic=%D0%95%D0%B2%D0%B3%D0%B5%D0%BD%D1%8C%D0%B5%D0%B2%D0%B8%D1%87&email=ramiro.cruz%40mail.ru&theme=%D0%B0%D0%B2%D1%8B%D1%84%D0%BF%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B%D1%84%D0%BF%D1%8B%D0%B2%D0%BF&text=%D0%B2%D1%8B%D0%BF%D1%84%D0%BF%D1%84%D0%B2%D1%8B%D0%BF%D1%84%D1%8B%D0%BF%D0%B2%D1%8B%D0%BF%D0%B2%D1%8B" for 127.0.0.1 at 2018-01-10 17:12:31 +0300
+Processing by AppController#feedback as HTML
+  Parameters: {"utf8"=>"✓", "last_name"=>"Балихин", "name"=>"Никита", "patronymic"=>"Евгеньевич", "email"=>"ramiro.cruz@mail.ru", "theme"=>"авыфппвыпвыпвыфпывп", "text"=>"выпфпфвыпфыпвыпвы"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "feedbacks" ("name", "last_name", "patronymic", "email", "theme", "text", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "Никита"], ["last_name", "Балихин"], ["patronymic", "Евгеньевич"], ["email", "ramiro.cruz@mail.ru"], ["theme", "авыфппвыпвыпвыфпывп"], ["text", "выпфпфвыпфыпвыпвы"], ["created_at", "2018-01-10 14:12:31.482678"], ["updated_at", "2018-01-10 14:12:31.482678"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering auto_answer_mailer/check_email.html.erb within layouts/mailer
+  Rendered auto_answer_mailer/check_email.html.erb within layouts/mailer (0.8ms)
+AutoAnswerMailer#check_email: processed outbound mail in 48.8ms
+Sent mail to ramiro.cruz@mail.ru (1051.2ms)
+Date: Wed, 10 Jan 2018 17:12:31 +0300
+From: pisma@npcpn.ru
+To: ramiro.cruz@mail.ru
+Message-ID: <5a561f4f91daf_23a93ff9b61f5e10857f6@MacBook-Air-Nikita.local.mail>
+Subject: =?UTF-8?Q?=D0=9E=D0=B1=D1=80=D0=B0=D1=89=D0=B5=D0=BD=D0=B8=D0=B5?=
+ =?UTF-8?Q?_=D0=B2_=D0=93=D0=91=D0=A3=D0=97_=D0=9D=D0=9F=D0=A6_=D0=B8=D0=BC.?=
+ =?UTF-8?Q?_=D0=A1=D0=BE=D0=BB=D0=BE=D0=B2=D1=8C=D0=B5=D0=B2=D0=B0?=
+ =?UTF-8?Q?_=D0=94=D0=97=D0=9C?=
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0
+cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNo
+YXJzZXQ9dXRmLTgiIC8+CiAgICA8c3R5bGU+CiAgICAgIC8qIEVtYWlsIHN0
+eWxlcyBuZWVkIHRvIGJlIGlubGluZSAqLwogICAgPC9zdHlsZT4KICA8L2hl
+YWQ+CgogIDxib2R5PgogICAgPCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxo
+ZWFkPgogICAgPG1ldGEgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVU
+Ri04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIC8+CiAgPC9oZWFkPgog
+IDxib2R5PgogICAgPHA+0KPQstCw0LbQsNC10LzRi9C5IDxiPtCd0LjQutC4
+0YLQsCDQldCy0LPQtdC90YzQtdCy0LjRhzwvYj4sPC9wPgogICAgPHA+0JLQ
+sNGI0LUg0L7QsdGA0LDRidC10L3QuNC1INC90LAg0YHQsNC50YIgd3d3Lm5w
+Y3BuLnJ1INC/0YDQuNC90Y/RgtC+LCDQtdC80YMg0L/RgNC40YHQstC+0LXQ
+vSDQuNC00LXQvdGC0LjRhNC40LrQsNGG0LjQvtC90L3Ri9C5INC90L7QvNC1
+0YAgMjEuCtCf0L4g0YDQtdC30YPQu9GM0YLQsNGC0LDQvCDRgNCw0YHRgdC8
+0L7RgtGA0LXQvdC40Y8g0JLRiyDQv9C+0LvRg9GH0LjRgtC1INC+0YLQstC1
+0YIg0L/QviDRgdGD0YnQtdGB0YLQstGDINCy0L7Qv9GA0L7RgdCwLiAK0JTQ
+sNC90L3QvtC1INC/0LjRgdGM0LzQviDRgdGE0L7RgNC80LjRgNC+0LLQsNC9
+0L4g0LDQstGC0L7QvNCw0YLQuNGH0LXRgdC60LgsINC/0YDQvtGB0YzQsdCw
+INC90LUg0L7RgtCy0LXRh9Cw0YLRjCDQvdCwINC90LXQs9C+LgrQntGE0LjR
+htC40LDQu9GM0L3Ri9C5INGB0YDQvtC6INGA0LDRgdGB0LzQvtGC0YDQtdC9
+0LjRjyDQvtCx0YDQsNGJ0LXQvdC40Y8gJm1kYXNoOyDQvtC00LjQvSDQvNC1
+0YHRj9GGLCDQvtC00L3QsNC60L4sINCyINCx0L7Qu9GM0YjQuNC90YHRgtCy
+0LUg0YHQu9GD0YfQsNC10LIg0L7RgtCy0LXRgiDQvdCw0L/RgNCw0LLQu9GP
+0LXRgtGB0Y8g0LAg0YLQtdGH0LXQvdC40LUg0L3QtdC00LXQu9C4LjwvcD4K
+CTxwPtCi0LXQvNCwINCy0LDRiNC10LPQviDQvtCx0YDQsNGJ0LXQvdC40Y86
+INCw0LLRi9GE0L/Qv9Cy0YvQv9Cy0YvQv9Cy0YvRhNC/0YvQstC/PC9wPgog
+ICAgPHA+PGI+0JDQtNC80LjQvdC40YHRgtGA0LDRhtC40Y8g0JPQkdCj0Jcg
+0J3Qn9CmINC40LwuINCh0L7Qu9C+0LLRjNC10LLQsCDQlNCX0Jw8L2I+PC9w
+PgogIDwvYm9keT4KPC9odG1sPgogIDwvYm9keT4KPC9odG1sPgo=
+
+  Rendering auto_answer_mailer/repliable_email.html.erb within layouts/mailer
+  Rendered auto_answer_mailer/repliable_email.html.erb within layouts/mailer (0.7ms)
+AutoAnswerMailer#repliable_email: processed outbound mail in 51.8ms
+Sent mail to newwwesters@gmail.com (937.2ms)
+Date: Wed, 10 Jan 2018 17:12:32 +0300
+From: pisma@npcpn.ru
+To: newwwesters@gmail.com
+Message-ID: <5a561f50ab560_23a93ff9b61f5e1085879@MacBook-Air-Nikita.local.mail>
+Subject: =?UTF-8?Q?[npcpn]?=
+ =?UTF-8?Q?_=D0=B0=D0=B2=D1=8B=D1=84=D0=BF=D0=BF=D0=B2=D1=8B=D0=BF=D0=B2=D1=8B=D0=BF=D0=B2=D1=8B=D1=84=D0=BF=D1=8B=D0=B2=D0=BF?=
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+CjxodG1sPgogIDxoZWFkPgogICAgPG1ldGEgaHR0
+cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNo
+YXJzZXQ9dXRmLTgiIC8+CiAgICA8c3R5bGU+CiAgICAgIC8qIEVtYWlsIHN0
+eWxlcyBuZWVkIHRvIGJlIGlubGluZSAqLwogICAgPC9zdHlsZT4KICA8L2hl
+YWQ+CgogIDxib2R5PgogICAgPGgzPtCe0LHRgNCw0YnQtdC90LjQtSDihJYy
+MTwvaDM+Cgo8cD4KICA8c3Ryb25nPtCi0LXQvNCwOjwvc3Ryb25nPjxicj4K
+ICDQsNCy0YvRhNC/0L/QstGL0L/QstGL0L/QstGL0YTQv9GL0LLQvwo8L3A+
+Cgo8cD4KICA8c3Ryb25nPtCk0JjQniDQt9Cw0Y/QstC40YLQtdC70Y86PC9z
+dHJvbmc+PGJyPgogINCR0LDQu9C40YXQuNC9INCd0LjQutC40YLQsCDQldCy
+0LPQtdC90YzQtdCy0LjRhwo8L3A+Cgo8cD4KICA8c3Ryb25nPkVtYWlsOjwv
+c3Ryb25nPjxicj4KICByYW1pcm8uY3J1ekBtYWlsLnJ1CjwvcD4KCjxwPgog
+IDxzdHJvbmc+0KLQtdC60YHRgiDQvtCx0YDQsNGJ0LXQvdC40Y86PC9zdHJv
+bmc+PGJyPgogINCy0YvQv9GE0L/RhNCy0YvQv9GE0YvQv9Cy0YvQv9Cy0YsK
+PC9wPgogIDwvYm9keT4KPC9odG1sPgo=
+
+Redirected to http://localhost:3000/?message=%D0%92%D0%B0%D1%88%D0%B0+%D0%BE%D0%B1%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5+%D0%BE%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BE
+Completed 302 Found in 2184ms (ActiveRecord: 10.0ms)
+
+
+Started GET "/?message=%D0%92%D0%B0%D1%88%D0%B0+%D0%BE%D0%B1%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5+%D0%BE%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BE" for 127.0.0.1 at 2018-01-10 17:12:33 +0300
+Processing by AppController#new as HTML
+  Parameters: {"message"=>"Ваша обращение отправлено"}
+  Rendering app/new.html.erb within layouts/application
+  [1m[36mAffilate Load (2.2ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates" WHERE (name != 'Admin')[0m
+  Rendered app/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 188ms (Views: 174.8ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-01-10 17:13:20 +0300
+Processing by AppController#new as HTML
+  Rendering app/new.html.erb within layouts/application
+  [1m[36mAffilate Load (0.6ms)[0m  [1m[34mSELECT "affilates".* FROM "affilates" WHERE (name != 'Admin')[0m
+  Rendered app/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 186ms (Views: 180.1ms | ActiveRecord: 0.6ms)
+
+

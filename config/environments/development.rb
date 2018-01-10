@@ -55,14 +55,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'no-reply@npcpn.com'}
+  config.action_mailer.default_options = {from: 'pisma@npcpn.ru'}
   config.action_mailer.smtp_settings = {
-    tls: => true,
-    address: 'smtp.yandex.ru',
-    port: 465,
-    domain: 'yandex.ru',
-    authentication: 'plain',
-    user_name: 'rgakzhigitov@npcpn.ru',
-    password: 'ndgjao'
-  }
+    :address => 'smtp.yandex.ru',
+    :port => 25,
+    :domain => 'mydomain.ru',
+    :authentication => :login,
+    :user_name => 'pisma@npcpn.ru',
+    :password => 'KeHK5y'
+}
 end

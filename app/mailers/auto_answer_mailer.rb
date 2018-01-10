@@ -1,5 +1,5 @@
 class AutoAnswerMailer < ApplicationMailer
-	default :from => "newwwesters@gmail.com"
+	default :from => "pisma@npcpn.ru"
 
 	def check_email(feedback)
 	    @feedback = feedback
