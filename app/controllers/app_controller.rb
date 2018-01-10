@@ -36,7 +36,7 @@ class AppController < ApplicationController
   end
 
   def add # метод, заполняющий поля БД
-    if (!(params[:is_moscow] == 'off' && params[:affilate] == '3'))
+    if ((params[:is_moscow] != 'off') || (params[:affilate] != '3'))
       # проверяем, зарегистрирован ли пациент в базе
       @client = Client.where('name = ? and last_name = ? and phone = ?', params[:name], params[:last_name], params[:phone])[0]
       if @client.nil?
