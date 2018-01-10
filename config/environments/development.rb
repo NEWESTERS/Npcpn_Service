@@ -63,5 +63,5 @@ Rails.application.configure do
     :authentication => :login,
     :user_name => 'pisma@npcpn.ru',
     :password => 'KeHK5y'
-}
+  }
 end

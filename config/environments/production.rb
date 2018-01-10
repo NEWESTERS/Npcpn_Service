@@ -86,14 +86,13 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_options = {from: 'newwwesters@gmail.com'}
+  config.action_mailer.default_options = {from: 'pisma@npcpn.ru'}
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    domain: 'npcpn-test.herokuapp.com',
-    user_name: 'newwwesters@gmail.com',
-    password: '25881234',
-    authentication: 'plain',
-    enable_starttls_auto: true
+    :address => 'smtp.yandex.ru',
+    :port => 25,
+    :domain => 'mydomain.ru',
+    :authentication => :login,
+    :user_name => 'pisma@npcpn.ru',
+    :password => 'KeHK5y'
   }
 end
