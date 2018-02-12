@@ -20,8 +20,13 @@
 
     <div class="form-group col-md-6">
       <label for="doctor">Врач</label>
-     	<%= select_tag 'doctor', options_for_select(Doctor.all
+      <% if (current_user.affilate.name == 'Admin') %>
+        <%= select_tag 'doctor', options_for_select(Doctor.all
+        .collect{ |u| [u.full_name, u.id] }), :class => 'form-control' %>
+      <% else %>
+     	  <%= select_tag 'doctor', options_for_select(Doctor.where("affilate_id = ?", current_user.affilate_id)
      		.collect{ |u| [u.full_name, u.id] }), :class => 'form-control' %>
+      <% end %>
     </div>
   </div>
 
