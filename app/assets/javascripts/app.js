@@ -65,13 +65,13 @@ $(document).on('change', '#affilate', function() {
 		affilate: src[0]
 	};
 	$('#datepicker').trigger('change');
-	if ( $('#paid_on').is(':checked') && $('#affilate').val() == "3" ) {
-		$('#info>label').text('Запись в выбранный филиал платных пациентов осуществляется только по телефону');
-		$('#info>label').show(300);
+	if ( $('#paid_on').is(':checked') ) {	
+		$('#paid_on').trigger('change')	
 	} else {
 		$('#info>label').hide(300);
-		app_update(data, data.to_find);
+		$('#submit_btn').attr('disabled', false)
 	}
+	app_update(data, data.to_find);
 });
 
 // при выборе врача в список сеансов добавляются элементы
@@ -99,7 +99,14 @@ $(document).on('change', '#paid_off', function(){
 $(document).on('change', '#paid_on', function(){
 	$('#paid').show(300);
 	if ( $('#affilate').val() == "3" ) {
-		$('#info>label').text('Запись в выбранный филиал платных пациентов осуществляется только по телефону');
+		$('#info>label').text('Запись в выбранный филиал платных пациентов осуществляется только по телефону 8(495)680-09-43');
+		$('#info>label').show(300);
+		$('#submit_btn').attr('disabled', true)
+	} else {
+		$('#submit_btn').attr('disabled', false)
+	}
+	if ( $('#affilate').val() == "2" ) {
+		$('#info>label').text('Дополнительная информация по платным услугам по телефону: 8(985)265-51-01.');
 		$('#info>label').show(300);
 	}
 });
