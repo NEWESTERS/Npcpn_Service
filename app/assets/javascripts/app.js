@@ -103,11 +103,8 @@ $(document).on('change', '#paid_on', function(){
 		$('#info>label').show(300);
 		$('#submit_btn').attr('disabled', true)
 	} else {
+		$('#info>label').hide(300);
 		$('#submit_btn').attr('disabled', false)
-	}
-	if ( $('#affilate').val() == "2" ) {
-		$('#info>label').text('Дополнительная информация по платным услугам по телефону: 8(985)265-51-01.');
-		$('#info>label').show(300);
 	}
 });
 
