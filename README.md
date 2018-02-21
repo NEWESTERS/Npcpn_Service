@@ -1,3 +1,6 @@
-# README
-
-![Heroku](https://heroku-badge.herokuapp.com/?app=npcpn)
+## Сервис для записи на приём ко врачу в НПЦ им. Соловьёва
+reg.npcpn.ru
+## Использованные технологии
+* Ruby On Rails
+* Javascript
+* PostgeSQL
