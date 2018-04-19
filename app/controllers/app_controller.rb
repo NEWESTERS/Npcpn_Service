@@ -53,8 +53,10 @@ class AppController < ApplicationController
         # находим сеанс, на который производится запись и задаём пациента
         @seance = Seance.find(params[:seance]) if !params[:seance].nil?
         if !@seance.nil? && @seance.client.nil?
-          @seance.client = @client
-          @seance.save
+          @seance.with_lock do
+            @seance.client = @client
+            @seance.save!
+          end
           # перенаправление на страницу с информацией о записи
           redirect_to action: 'show', seance_id: @seance.id
         else
