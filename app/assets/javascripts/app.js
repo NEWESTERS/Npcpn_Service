@@ -21,6 +21,7 @@ function handle_error(data) {
 		}
 	};
 };
+
 function app_update(source, target) {
 	$.ajax({
 		// адрес запроса
@@ -96,6 +97,7 @@ $(document).on('change', '#paid_off', function(){
 	$('#affilate').trigger('change')
 
 });
+
 $(document).on('change', '#paid_on', function(){
 	$('#paid').show(300);
 	if ( $('#affilate').val() == "3" ) {

@@ -63,7 +63,8 @@ class AppController < ApplicationController
           redirect_to root_path(message: "Не выбран сеанс")
         end
       else
-        redirect_to root_path(message: "Введены некорректные данные")
+        messages = @client.errors.messages.map{|key, value| value}.join(', ')
+        redirect_to root_path(message: "Некорректно заполнены поля: #{messages}")
       end
     else
       redirect_to root_path(message: "Запись в филиал \"" + Affilate.find_by_id(params[:affilate]).name + "\" платных пациентов осуществляется только по телефону 8-985-265-51-01")

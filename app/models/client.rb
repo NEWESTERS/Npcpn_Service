@@ -1,10 +1,10 @@
 class Client < ApplicationRecord
 	has_many :seances
-	validates :name, format: { with: /\A[а-яА-Я]+[ -]?[а-яА-Я]*\z/, message: "Should contain only letters" }
-	validates :last_name, format: { with: /\A[а-яА-Я]+[ -]?[а-яА-Я]*\z/, message: "Should contain only letters" }
-	validates :patronymic, format: { with: /\A[а-яА-Я]+[ -]?[а-яА-Я]*\z/, message: "Should contain only letters" }
-	validates :birthdate, presence: true
-	validates :phone, format: { with: /\A[+][7,8][ ][(][0-9]{3}[)][ ][0-9]{3}[-][0-9]{2}[-][0-9]{2}+\z/, message: "Should be valid phone" }
+	validates :name, format: { with: /\A[а-яА-Я]+[ -]?[а-яА-Я]*\z/, message: "имя" }
+	validates :last_name, format: { with: /\A[а-яА-Я]+[ -]?[а-яА-Я]*\z/, message: "фамилия" }
+	validates :patronymic, format: { with: /\A[а-яА-Я]+[ -]?[а-яА-Я]*\z/, message: "отчество" }
+	validates :birthdate, presence: { message: "дата рождения" }
+	validates :phone, format: { with: /\A[+][7,8][ ][(][0-9]{3}[)][ ][0-9]{3}[-][0-9]{2}[-][0-9]{2}+\z/, message: "номер телефона" }
 
 	def full_name
 		last_name + ' ' + name + ' ' + patronymic
